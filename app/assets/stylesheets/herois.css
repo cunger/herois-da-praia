@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+}
+
+main,
+header,
+footer {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+header,
+footer {
+  justify-content: center;
+  align-items: center;
+  max-height: 100px;
+}
+
+header > img,
+header > a,
+footer > a {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+header,
+footer {
+  padding: 10px;
+  background-color: #cff6f2;
+  font-size: 2em;
+}
+
+header {
+  text-transform: uppercase;
+  font-family: 'Baloo Bhai', sans-serif;
+}
+
+footer {
+  font-family: monospace;
+}
+
+main {
+  padding: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+}
