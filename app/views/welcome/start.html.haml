@@ -1,3 +1,8 @@
-= button_to 'Start a new beach clean', new_cleanup_path, :method => :get
+%p.intro
+  Olá, beach hero!
 
-= button_to 'Analytics', analytics_start_path , :method => :get
+%p
+  = link_to 'New beach clean', new_cleanup_path
+
+%p
+  = link_to 'Analytics', analytics_start_path

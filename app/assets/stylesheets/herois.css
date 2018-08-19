@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+/* LAYOUT */
 
 html,
 body {
@@ -18,13 +20,23 @@ footer {
   flex: 1;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 header,
 footer {
-  justify-content: center;
-  align-items: center;
   max-height: 100px;
+}
+
+#content {
+  max-width: 400px;
+}
+
+/* STYLE */
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 header > img,
@@ -43,12 +55,10 @@ header,
 footer {
   padding: 10px;
   background-color: #cff6f2;
-  font-size: 2em;
 }
 
 header {
   text-transform: uppercase;
-  font-family: 'Baloo Bhai', sans-serif;
 }
 
 footer {
@@ -66,4 +76,10 @@ li {
 a {
   text-decoration: none;
   color: #232323;
+  font-size: 1.6em;
+}
+
+.intro {
+  margin-top: 1em;
+  margin-bottom: 2em;
 }

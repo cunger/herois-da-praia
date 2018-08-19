@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#start'
-
-  get 'welcome/how' => 'welcome#how'
-  get 'welcome/why' => 'welcome#why'
+  get  'welcome/start' => 'welcome#start'
+  get  'welcome/info'  => 'welcome#info'
 
   # Routes for logging beach clean data.
 
