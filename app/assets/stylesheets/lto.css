@@ -1,0 +1,8 @@
+header {
+  text-transform: uppercase;
+}
+
+header,
+footer {
+  background-color: #cff6f2
+}

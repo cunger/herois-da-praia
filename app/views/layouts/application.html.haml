@@ -1,0 +1,31 @@
+!!! 5
+%html
+
+  %head
+    %title Os heróis da praia
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'https://use.fontawesome.com/releases/v5.2.0/css/all.css', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+  %body
+    %header
+      = link_to 'Log', new_cleanup_path
+
+      = image_tag 'lto_logo.png', size: '40x40', alt: 'LTO'
+
+      = link_to 'How', welcome_how_path
+      = link_to 'Why', welcome_why_path
+
+    %main
+      = yield
+
+    %footer
+      %ul
+        %li
+          = link_to fa_icon('globe', text: 'Love the Oceans'), 'https://www.lovetheoceans.org'
+        %li
+          = link_to fa_icon('facebook', text: 'Love the Oceans'), 'https://www.facebook.com/lovetheoceansorganisation/'
+        %li
+          = link_to fa_icon('instagram', text: '@lovetheoceans'), 'https://www.instagram.com/lovetheoceans/'
