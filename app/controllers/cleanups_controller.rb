@@ -22,6 +22,6 @@ class CleanupsController < ApplicationController
   private
 
   def cleanup_parameters
-    params.require(:cleanup).permit(:date, :place)
+    params.require(:cleanup).permit(:date, :place, :user_id)
   end
 end

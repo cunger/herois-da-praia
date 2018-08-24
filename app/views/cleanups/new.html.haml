@@ -1,4 +1,6 @@
 = form_for @cleanup do |form|
+  = form.hidden_field :user_id, :value => User.default.id 
+
   = form.label :date, 'Date'
   = form.date_field :date, default: Time.now
 
