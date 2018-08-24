@@ -1,8 +1,15 @@
 class User < ApplicationRecord
   has_many :cleanups
 
+  attr_reader :name, :group
+
   def self.default
-    User.find_by name: 'Momo'
+    User.find_or_create_by name: 'Momo'
+  end
+
+  def unsubmitted_cleanups
+    Cleanup.where("user_id = #{id}")
+           .where.not("submitted")
   end
 
   module Group

@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   root 'welcome#start'
-  get  'welcome/start' => 'welcome#start'
-  get  'welcome/info'  => 'welcome#info'
+
+  get 'welcome/start' => 'welcome#start'
+  get 'welcome/info'  => 'welcome#info'
 
   # Routes for logging beach clean data.
 
   resources :cleanups do
+    get 'fill', on: :member
     post 'submit', on: :member
 
-    resource :items, only: [:index, :new, :create] do
+    resource :items, only: [:index, :create] do
       post 'increase', on: :member
       post 'decrease', on: :member
       post 'reset', on: :collection

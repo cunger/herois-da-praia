@@ -1,0 +1,13 @@
+= form_for @cleanup do |form|
+  = form.label :date, 'Date'
+  = form.date_field :date, default: Time.now
+
+  = form.label :place, 'Place'
+  = form.select :place, options_for_select([ |
+      ['Guinjata', Cleanup::Place.Guinjata], |
+      ['Guinjata point', Cleanup::Place.GuinjataPoint], |
+      ['Paindane', Cleanup::Place.Paindane], |
+      ['Other', Cleanup::Place.Other], |
+     ]) |
+
+  = form.submit 'Start logging'

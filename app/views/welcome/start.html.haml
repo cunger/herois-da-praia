@@ -5,4 +5,12 @@
   = link_to 'New beach clean', new_cleanup_path
 
 %p
+  You have
+  #{@user.unsubmitted_cleanups.size}
+  unsubmitted beach cleans.
+
+  %br
+  = link_to 'See all beach cleans', cleanups_path
+
+%p
   = link_to 'Analytics', analytics_start_path
