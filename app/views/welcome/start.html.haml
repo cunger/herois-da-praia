@@ -5,9 +5,14 @@
   = link_to 'New beach clean', new_cleanup_path
 
 %p
-  You have
-  #{@user.unsubmitted_cleanups.size}
-  unsubmitted beach cleans.
+  - n = @user.unsubmitted_cleanups.size
+  - case n
+  - when 0
+    You have no unsubmitted beach cleans.
+  - when 1
+    You have one unsubmitted beach clean.
+  - else
+    You have #{n} unsubmitted beach cleans.
 
   %br
   = link_to 'See all beach cleans', cleanups_path

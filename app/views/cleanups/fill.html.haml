@@ -1,1 +1,5 @@
-Fill in details!
+%ul
+  - ItemType.each do |item| 
+    %li #{item.fullName} + 0 -
+
+= button_to 'Submit', submit_cleanup_path(@cleanup)

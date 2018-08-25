@@ -24,6 +24,10 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_record_enumerated_type (0.0.5)
+      activesupport
+      enumerated_type
+      i18n
     activejob (5.2.1)
       activesupport (= 5.2.1)
       globalid (>= 0.3.6)
@@ -67,6 +71,7 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     diff-lcs (1.3)
+    enumerated_type (0.5.0)
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -209,6 +214,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_record_enumerated_type
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)

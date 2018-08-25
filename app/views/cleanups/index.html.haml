@@ -1,0 +1,18 @@
+%section
+  %h2 Unsubmitted
+
+  %ul
+  - user = User.default
+  - user.unsubmitted_cleanups.each do |clean|
+    %li
+      #{clean[:date]} #{Place.by(:code, clean[:place]).fullName}
+      = button_to 'SUBMIT', submit_cleanup_path(clean)
+
+%section.subdued
+  %h2 Submitted
+
+  %ul
+  - user = User.default
+  - user.submitted_cleanups.each do |clean|
+    %li
+      #{clean[:date]} #{clean[:place]}

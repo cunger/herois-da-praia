@@ -17,6 +17,14 @@ class CleanupsController < ApplicationController
   end
 
   def fill
+    @cleanup = Cleanup.find(params[:id])
+  end
+
+  def submit
+    cleanup = Cleanup.find(params[:id])
+    cleanup.update(submitted: true)
+
+    redirect_to cleanups_path
   end
 
   private

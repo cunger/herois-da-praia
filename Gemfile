@@ -11,6 +11,8 @@ gem 'turbolinks', '~> 5'
 gem 'haml-rails'
 gem 'font-awesome-rails'
 
+gem 'active_record_enumerated_type'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
