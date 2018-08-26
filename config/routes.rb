@@ -7,14 +7,11 @@ Rails.application.routes.draw do
   # Routes for logging beach clean data.
 
   resources :cleanups do
-    get 'fill', on: :member
     post 'submit', on: :member
+    post 'reset', on: :member
 
-    resource :items, only: [:index, :create] do
-      post 'increase', on: :member
-      post 'decrease', on: :member
-      post 'reset', on: :collection
-    end
+    post   'items/:id', to: 'items#create', on: :member
+    delete 'items/:id', to: 'items#destroy', on: :member
   end
 
   # Routes for inspecting beach clean data.

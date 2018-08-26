@@ -5,7 +5,8 @@
   - user = User.default
   - user.unsubmitted_cleanups.each do |clean|
     %li
-      #{clean[:date]} #{Place.by(:code, clean[:place]).fullName}
+      %a{ href: cleanup_path(clean) }
+        #{clean[:date]} #{Place.by(:code, clean[:place]).fullName}
       = button_to 'SUBMIT', submit_cleanup_path(clean)
 
 %section.subdued
@@ -15,4 +16,5 @@
   - user = User.default
   - user.submitted_cleanups.each do |clean|
     %li
-      #{clean[:date]} #{clean[:place]}
+      %a{ href: cleanup_path(clean) }
+        #{clean[:date]} #{Place.by(:code, clean[:place]).fullName}
