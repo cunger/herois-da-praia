@@ -1,8 +1,12 @@
 class Cleanup < ApplicationRecord
   belongs_to :user
-  has_many :items
+  has_many :items, dependent: :destroy
 
   after_create :initialize_items
+
+  def place_name
+    Place.by(:code, self.place).fullName
+  end
 
   private
 

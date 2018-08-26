@@ -3,18 +3,20 @@
 
   %ul
   - user = User.default
-  - user.unsubmitted_cleanups.each do |clean|
+  - user.unsubmitted_cleanups.each do |cleanup|
     %li
-      %a{ href: cleanup_path(clean) }
-        #{clean[:date]} #{Place.by(:code, clean[:place]).fullName}
-      = button_to 'SUBMIT', submit_cleanup_path(clean)
+      %a{ href: cleanup_path(cleanup) }
+        #{cleanup.date} #{cleanup.place_name}
+      = button_to 'SUBMIT', submit_cleanup_path(cleanup)
+      = button_to 'DELETE', cleanup_path(cleanup), method: :delete
 
 %section.subdued
   %h2 Submitted
 
   %ul
   - user = User.default
-  - user.submitted_cleanups.each do |clean|
+  - user.submitted_cleanups.each do |cleanup|
     %li
-      %a{ href: cleanup_path(clean) }
-        #{clean[:date]} #{Place.by(:code, clean[:place]).fullName}
+      %a{ href: cleanup_path(cleanup) }
+        #{cleanup.date} #{cleanup.place_name}
+      = button_to 'DELETE', cleanup_path(cleanup), method: :delete

@@ -22,10 +22,21 @@ class CleanupsController < ApplicationController
     redirect_to cleanups_path
   end
 
+  def destroy
+    load_cleanup
+    destroy_cleanup
+
+    redirect_to cleanups_path
+  end
+
   private
 
   def build_cleanup
     @cleanup ||= Cleanup.new(cleanup_parameters)
+  end
+
+  def load_cleanup
+    @cleanup = Cleanup.find(params[:id])
   end
 
   def save_cleanup
@@ -34,8 +45,8 @@ class CleanupsController < ApplicationController
     end
   end
 
-  def load_cleanup
-    @cleanup = Cleanup.find(params[:id])
+  def destroy_cleanup
+    @cleanup.destroy
   end
 
   def cleanup_parameters
