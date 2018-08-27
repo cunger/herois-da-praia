@@ -7,8 +7,8 @@
     %li
       %a{ href: cleanup_path(cleanup) }
         #{cleanup.date} #{cleanup.place_name}
-      = button_to 'SUBMIT', submit_cleanup_path(cleanup)
-      = button_to 'DELETE', cleanup_path(cleanup), method: :delete
+      = button_to 'SUBMIT', submit_cleanup_path(cleanup), { class: 'action' }
+      = button_to 'DELETE', cleanup_path(cleanup), { method: :delete, class: 'action' }
 
 %section.subdued
   %h2 Submitted
@@ -19,4 +19,4 @@
     %li
       %a{ href: cleanup_path(cleanup) }
         #{cleanup.date} #{cleanup.place_name}
-      = button_to 'DELETE', cleanup_path(cleanup), method: :delete
+      = button_to 'DELETE', cleanup_path(cleanup), { method: :delete, class: 'action' }

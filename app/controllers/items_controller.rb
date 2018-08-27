@@ -1,18 +1,18 @@
 class ItemsController < ApplicationController
-  def create
+  def plus
     load_item
     increase_quantity
     save_item
 
-    redirect_to cleanup_path(cleanup)
+    redirect_to scope_path(scope)
   end
 
-  def destroy
+  def minus
     load_item
     decrease_quantity
     save_item
 
-    redirect_to cleanup_path(cleanup)
+    redirect_to scope_path(scope)
   end
 
   private
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
     @item.update(quantity: @item.quantity - 1)
   end
 
-  def cleanup
-    Cleanup.find(@item.cleanup_id)
+  def scope
+    scope.find(@item.scope_id)
   end
 end

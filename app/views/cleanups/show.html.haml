@@ -1,8 +1,4 @@
 %ul
-  - @cleanup.items.each do |item|
+  - @cleanup.items.order(:category).each do |item|
     %li
-      = button_to "#{item.category_name} +", { controller: :items, action: :create, id: item.id }
-      = item.quantity
-      = button_to "-", { controller: :items, action: :destroy, id: item.id }, method: :delete
-
-= button_to 'Submit', submit_cleanup_path(@cleanup)
+      #{item.quantity} #{item.category_name}

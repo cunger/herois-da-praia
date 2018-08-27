@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
 
 /* LAYOUT */
 
@@ -36,7 +36,7 @@ footer {
 /* STYLE */
 
 body {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 header > img,
@@ -73,13 +73,22 @@ li {
   list-style-type: none;
 }
 
+.intro {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+/* Links and button */
+
 a {
   text-decoration: none;
   color: #232323;
   font-size: 1.6em;
 }
 
-.intro {
-  margin-top: 1em;
-  margin-bottom: 2em;
+button.item {
+  display: inline-block;
+  padding: 10px;
+  font-size: 1em;
+  border: 0;
 }

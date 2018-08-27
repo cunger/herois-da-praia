@@ -10,28 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_132213) do
+ActiveRecord::Schema.define(version: 2018_08_27_073704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cleanups", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
+    t.bigint "scope_id"
+    t.string "category"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scope_id"], name: "index_items_on_scope_id"
+  end
+
+  create_table "observations", force: :cascade do |t|
+    t.bigint "scope_id"
+    t.string "species"
+    t.string "behaviour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scope_id"], name: "index_observations_on_scope_id"
+  end
+
+  create_table "scopes", force: :cascade do |t|
     t.bigint "user_id"
     t.string "place"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "submitted", default: false, null: false
-    t.index ["user_id"], name: "index_cleanups_on_user_id"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.bigint "cleanup_id"
-    t.string "category"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cleanup_id"], name: "index_items_on_cleanup_id"
+    t.index ["user_id"], name: "index_scopes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_08_25_132213) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "cleanups", "users"
-  add_foreign_key "items", "cleanups"
+  add_foreign_key "items", "scopes"
+  add_foreign_key "observations", "scopes"
+  add_foreign_key "scopes", "users"
 end

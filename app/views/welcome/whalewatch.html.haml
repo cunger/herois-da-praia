@@ -1,0 +1,20 @@
+
+%p
+  = link_to 'New observation', new_scope_path
+
+%p
+  -# - n = @user.unsubmitted_cleanups.size
+  -# - case n
+  -# - when 0
+  -#   You have no unsubmitted beach cleans.
+  -# - when 1
+  -#   You have one unsubmitted beach clean.
+  -# - else
+  -#   You have #{n} unsubmitted beach cleans.
+  -#
+  -# - unless @user.cleanups.empty?
+  -#   %br
+  -#   = link_to 'See beach cleans', cleanups_path
+
+%p
+  = link_to 'Analytics', analytics_start_path
