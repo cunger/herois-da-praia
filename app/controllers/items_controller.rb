@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  def index
+  end
+  
   def plus
     load_item
     increase_quantity

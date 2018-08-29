@@ -1,7 +1,7 @@
 require 'enumerated_type'
 
 # Note: This is a stub and will probably change.
-# For example, should allow to capture specific GPS location.
+# Should allow to capture specific GPS location.
 class Place
   include EnumeratedType
 

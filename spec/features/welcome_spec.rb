@@ -11,6 +11,7 @@ feature 'Welcome page' do
     click_on('Beach clean')
 
     expect(page).to have_content('New beach clean')
+    # TODO If admin, then also 'Analytics'
   end
 
   scenario 'Move to whale watching' do
@@ -18,5 +19,6 @@ feature 'Welcome page' do
     click_on('Whale watch')
 
     expect(page).to have_content('New observation')
+    # TODO If admin, then also 'Analytics'
   end
 end

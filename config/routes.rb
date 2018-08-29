@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#start'
 
-  get 'welcome/beachclean' => 'welcome#beachclean'
-  get 'welcome/whalewatch' => 'welcome#whalewatch'
+  get 'beachclean' => 'welcome#beachclean'
+  get 'whalewatch' => 'welcome#whalewatch'
 
   # Routes for logging data.
 
