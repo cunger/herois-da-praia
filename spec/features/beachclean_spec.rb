@@ -14,9 +14,19 @@ feature 'Beach clean' do
     expect(Scope.last.place).to eq('paindane')
   end
 
-  scenario 'start a new beach clean without filling in form fields' do
+  scenario 'start a new beach clean without filling in the date field is invalid' do
     new_scope_form.visit_from_beachclean.fill_in_with().submit
 
-    expect(Scope.last).to be_nil # TODO Is that really what is expected?
+    expect(Scope.last).to be_nil
+  end
+
+  scenario 'start a new beach clean without filling in the place field is fine' do
+    new_scope_form.visit_from_beachclean.fill_in_with(
+      date: '2018-01-01'
+    ).submit
+
+    expect(Scope.last).not_to be_nil
+    expect(Scope.last.date.strftime("%Y-%m-%d")).to eq('2018-01-01')
+    expect(Scope.last.place).to be_empty
   end
 end

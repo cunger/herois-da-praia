@@ -9,10 +9,6 @@ class Place
           :code => 'guinjata',
           :fullName => 'Guinjata'
 
-  declare :guinjataPoint,
-          :code => 'guinjata_point',
-          :fullName => 'Guinjata point'
-
   declare :paindane,
           :code => 'paindane',
           :fullName => 'Paindane'

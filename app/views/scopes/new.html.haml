@@ -5,6 +5,6 @@
   = form.date_field :date, default: Time.now.strftime("%Y-%m-%d")
 
   = form.label :place, 'Place'
-  = form.select :place, options_for_select(Place.as_select_options)
+  = form.select :place, Place.as_select_options, { include_blank: true, selected: nil }
 
   = form.submit 'Start logging'

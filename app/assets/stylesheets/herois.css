@@ -92,3 +92,20 @@ button.item {
   font-size: 1em;
   border: 0;
 }
+
+/* Forms */
+
+label,
+input {
+  display: block;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input[type=submit] {
+  margin-top: 20px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: bold;
+}
