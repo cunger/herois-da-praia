@@ -4,20 +4,23 @@ Rails.application.routes.draw do
   get 'beachclean' => 'welcome#beachclean'
   get 'whalewatch' => 'welcome#whalewatch'
 
-  # Routes for logging data.
+  resources :scopes, only: [:new, :create] do
+    # Routes for logging beach clean data.
+    get  'items',       to: 'items#index', on: :member
+    post 'items/plus',  to: 'items#plus',  on: :member
+    post 'items/minus', to: 'items#minus', on: :member
 
-  resources :scopes do
-    resources :observations
-    resources :items do
-      post 'plus',  to: 'items#plus', on: :member
-      post 'minus', to: 'items#minus', on: :member
+    post 'items/submit', on: :member
+    post 'items/reset',  on: :member
+
+    # Routes for logging whale watching data.
+    resources :observations do
+      post 'submit', on: :member
+      post 'reset',  on: :member
     end
-
-    post 'submit', on: :member
-    post 'reset', on: :member
   end
 
-  # Routes for inspecting data.
-
-  get 'analytics/start' => 'analytics#start'
+  # Routes for inspecting beach clean data.
+  get 'beachclean/analytics/start' => 'analytics#start'
+  get 'whalewatch/analytics/start' => 'analytics#start'
 end
