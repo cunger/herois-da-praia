@@ -1,5 +1,5 @@
 = form_for @scope do |form|
-  = form.hidden_field :for, :value => @for
+  = form.hidden_field :for, :value => @destination
   = form.hidden_field :user_id, :value => User.default.id
 
   - if flash[:date_missing]

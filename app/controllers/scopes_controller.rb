@@ -1,23 +1,20 @@
 class ScopesController < ApplicationController
   # Scopes are shared among beach clean and whale watching routes.
-  # The destination parameter ensures that redirecting from scope goes
-  # to the intended destination:
+  # The destination parameter ensures that redirecting from scope
+  # goes to the intended destination:
   # /beachclean -> /scope/new?for=beachclean -> /scope/:id/items
-  # /whalewatch -> /scope/new?for-whalewatch -> /scope/:id/observations
+  # /whalewatch -> /scope/new?for=whalewatch -> /scope/:id/observations
+
+  before_action :build_scope, :set_destination, only: [:new, :create]
 
   def new
-    build_scope
-    set_destination
   end
 
   def create
-    build_scope
-
     if save_scope
       redirect_to_logging_page
     else
-      set_destination
-      render new_scope_path
+      render :new
     end
   end
 
@@ -38,15 +35,15 @@ class ScopesController < ApplicationController
   end
 
   def set_destination
-    @for = params[:for] || destination
-  end
-
-  def destination
-    params[:scope][:for]
+    @destination = params[:for] || params[:scope][:for]
   end
 
   def redirect_to_logging_page
-    redirect_to items_scope_path(@scope) if destination == 'beachclean'
-    redirect_to scope_observations_path(@scope) if destination == 'whalewatch'
+    case @destination
+    when 'beachclean'
+      redirect_to items_scope_path @scope
+    when 'whalewatch'
+      redirect_to scope_observations_path @scope
+    end
   end
 end
