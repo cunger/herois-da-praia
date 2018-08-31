@@ -2,7 +2,10 @@
   = form.hidden_field :for, :value => @for
   = form.hidden_field :user_id, :value => User.default.id
 
-  = form.label :date, 'Date'
+  - if flash[:date_missing]
+    = form.label :date, 'Date (required)', { class: 'error' }
+  - else
+    = form.label :date, 'Date'
   = form.date_field :date, default: Time.now.strftime("%Y-%m-%d")
 
   = form.label :place, 'Place'

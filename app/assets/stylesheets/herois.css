@@ -78,6 +78,10 @@ li {
   margin-bottom: 2em;
 }
 
+.error {
+  color: #d8000c;
+}
+
 /* Links and button */
 
 a {
