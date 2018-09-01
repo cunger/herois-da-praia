@@ -90,11 +90,8 @@ a {
   font-size: 1.6em;
 }
 
-button.item {
-  display: inline-block;
-  padding: 10px;
+a.item {
   font-size: 1em;
-  border: 0;
 }
 
 /* Forms */
@@ -112,4 +109,44 @@ input[type=submit] {
   margin-top: 20px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: bold;
+}
+
+/* Items list */
+
+ul {
+  margin: 0 auto;
+  padding: 0;
+}
+
+li.item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #e8fcfa;
+  margin: 6px 0;
+  padding: 0 6px;
+}
+
+.item-component {
+  display: inline-block;
+}
+
+.count {
+  background-color: #fff;
+}
+
+.plus,
+.minus,
+.count {
+  width: 40px;
+  text-align: center;
+}
+
+.name {
+  text-align: left;
+  margin-left: 0;
+}
+
+.submit-log {
+  display: block;
+  margin: 40px auto;
 }

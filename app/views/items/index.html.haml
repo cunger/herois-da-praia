@@ -1,0 +1,13 @@
+%ul
+  - ItemCategory.each do |item|
+    %a{ href: '#', class: 'item' }
+      %li.item
+        %span.item-component.name
+          = item.full_name
+        %span.item-component
+          %span.item-component.plus +
+          %span.item-component.count
+            = 0
+          %span.item-component.minus -
+
+%button.submit-log Submit

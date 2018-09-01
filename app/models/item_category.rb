@@ -3,27 +3,32 @@ require 'enumerated_type'
 class ItemCategory
   include EnumeratedType
 
-  declare :plastic_fragment_s,
-          :code => 'plastic_fragment_s',
-          :fullName => 'Plastic fragment S'
-
-  declare :plastic_fragment_m,
-          :code => 'plastic_fragment_m',
-          :fullName => 'Plastic fragment M'
-
-  declare :plastic_fragment_l,
-          :code => 'plastic_fragment_l',
-          :fullName => 'Plastic fragment L'
+  declare :plastic_fragment,
+          :code => 'plastic_fragment',
+          :full_name => 'Plastic fragment'
 
   declare :plastic_bottle,
           :code => 'plastic_bottle',
-          :fullName => 'Plastic bottle'
+          :full_name => 'Plastic bottle'
+
+  declare :fishing_gear,
+          :code => 'fishing_gear',
+          :full_name => 'Fishing gear'
 
   declare :bottle_cap,
           :code => 'bottle_cap',
-          :fullName => 'Bottle cap or lid'
+          :full_name => 'Bottle cap/lid'
 
   declare :cigarette_butt,
           :code => 'cigarette_butt',
-          :fullName => 'Cigarette butt'
+          :full_name => 'Cigarette butt'
+
+  declare :toothbrush,
+          :code => 'toothbrush',
+          :full_name => 'Toothbrush'
+
+  declare :lighter,
+          :code => 'lighter',
+          :full_name => 'Lighter'
+
 end
