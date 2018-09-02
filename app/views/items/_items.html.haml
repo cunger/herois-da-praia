@@ -1,13 +1,11 @@
 %ul
-  - @items.each_with_index do |item, n|
-    %a{ href: '#', class: 'item', 'data-position' => n }
+  - @items.each_with_index do |item|
+    %a{ href: '#', class: 'item', 'data-item-category' => item.category.code }
       %li.item
         %span.item-component.name
           = item.category.full_name
         %span.item-component
           %span.item-component.plus +
-          %span.item-component.count{ 'data-position' => n }
+          %span.item-component.count{ 'data-item-category' => item.category.code }
             = item.quantity
           %span.item-component.minus -
-
-%button.submit-log Save

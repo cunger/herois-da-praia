@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :get_scope, :build_item_list, only: [:index, :edit]
+  before_action :get_scope, :build_item_list
 
   def index
   end
@@ -7,7 +7,12 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
   def destroy
+    @items.each { |item| item.destroy }
+    @scope.destroy
   end
 
   private

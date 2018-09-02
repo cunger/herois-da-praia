@@ -1,35 +1,40 @@
 function isViewFor(controller, action) {
-  return !!document.querySelector('body' +
+  return !!$('body' +
     '[data-controller="' + controller + '"]' +
-    '[data-action="' + action + '"]');
+    '[data-action="' + action + '"]'
+  ).length;
 }
 
-document.addEventListener('turbolinks:load', function (event) {
+$(document).on('turbolinks:load', function (event) {
   if (!isViewFor('items', 'index')) { return; }
 
+  // Counting items
+
   var counter = {};
-
-  var elements = document.querySelectorAll('a.item');
-  var element;
   var counterElement;
-  var position;
-  var i;
-  for (i = 0; i < elements.length; i++) {
-    elements[i].addEventListener('click', function (event) {
-      event.preventDefault();
+  var category;
 
-      position = event.currentTarget.dataset.position;
-      counterElement = document.querySelector('.count[data-position="' + position + '"]');
-      counter[position] = parseInt(counterElement.innerHTML);
+  $('a.item').on('click', function (event) {
+    event.preventDefault();
 
-      if (event.target.className.indexOf('count') >= 0) { return; }
-      if (event.target.className.indexOf('minus') >= 0) {
-        if (counter[position] > 0) { counter[position] -= 1; }
-      } else {
-        counter[position] += 1;
-      }
+    category = event.currentTarget.dataset.itemCategory;
+    counterElement = $('.count[data-item-category="' + category + '"]');
+    counter[category] = parseInt(counterElement.text());
 
-      counterElement.innerHTML = counter[position];
-    });
-  }
+    if ($(event.target).hasClass('count')) { return; }
+    if ($(event.target).hasClass('minus')) {
+      if (counter[category] > 0) { counter[category] -= 1; }
+    } else {
+      counter[category] += 1;
+    }
+
+    counterElement.text(counter[category]);
+  });
+
+  // Submitting items
+
+  $('submit-log').on('click', function (event) {
+
+    // trigger rails submit with counter data
+  });
 });

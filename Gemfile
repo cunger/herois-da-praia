@@ -13,7 +13,7 @@ gem 'font-awesome-rails'
 
 gem 'active_record_enumerated_type'
 
-# Use Uglifier as compressor for JavaScript assets
+gem 'jquery-rails'
 gem 'uglifier', '>= 1.3.0'
 
 # Reduces boot times through caching; required in config/boot.rb
