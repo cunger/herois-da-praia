@@ -1,42 +1,25 @@
 class ItemsController < ApplicationController
+  before_action :get_scope, :build_item_list, only: [:index, :edit]
+
   def index
   end
-  
-  def plus
-    load_item
-    increase_quantity
-    save_item
 
-    redirect_to scope_path(scope)
+  def edit
   end
 
-  def minus
-    load_item
-    decrease_quantity
-    save_item
-
-    redirect_to scope_path(scope)
+  def destroy
   end
 
   private
 
-  def load_item
-    @item ||= Item.find(params[:id])
+  def get_scope
+    @scope = Scope.find(params[:id])
   end
 
-  def save_item
-    @item.save
-  end
-
-  def increase_quantity
-    @item.update(quantity: @item.quantity + 1)
-  end
-
-  def decrease_quantity
-    @item.update(quantity: @item.quantity - 1)
-  end
-
-  def scope
-    scope.find(@item.scope_id)
+  def build_item_list
+    @items = []
+    ItemCategory.each do |category|
+      @items << Item.new(category: category, quantity: 0, scope_id: @scope.id)
+    end
   end
 end

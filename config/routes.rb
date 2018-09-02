@@ -6,12 +6,10 @@ Rails.application.routes.draw do
 
   resources :scopes, only: [:new, :create] do
     # Routes for logging beach clean data.
-    get  'items',       to: 'items#index', on: :member
-    post 'items/plus',  to: 'items#plus',  on: :member
-    post 'items/minus', to: 'items#minus', on: :member
-
-    post 'items/submit', on: :member
-    post 'items/reset',  on: :member
+    get  'items',         to: 'items#index',  on: :member
+    post 'items/edit',    to: 'items#edit',   on: :member
+    post 'items/update',  to: 'items#update', on: :member
+    post 'items/destroy', to: 'items#destroy', on: :member
 
     # Routes for logging whale watching data.
     resources :observations do
