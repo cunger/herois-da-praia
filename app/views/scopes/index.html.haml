@@ -1,2 +1,14 @@
-
-Your previous beach cleans and whale observations will be displayed here soon.
+%ul
+- @activities.each do |activity|
+  %li.activity
+    = activity[:date]
+    = activity[:place]
+    %ul
+      - if activity[:beachclean]
+        %li
+          &raquo;
+          = link_to "Beach clean (#{activity[:items]} items)", items_scope_path(activity[:scope_id]), { class: 'activity' }
+      - if activity[:whalewatch]
+        %li
+          &raquo;
+          = link_to 'Observations', scope_observations_path(activity[:scope_id]), { class: 'activity' }

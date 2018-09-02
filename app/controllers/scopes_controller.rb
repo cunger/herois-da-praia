@@ -7,6 +7,10 @@ class ScopesController < ApplicationController
 
   before_action :build_scope, :set_destination, only: [:new, :create]
 
+  def index
+    collect_activities
+  end
+
   def new
   end
 
@@ -19,6 +23,11 @@ class ScopesController < ApplicationController
   end
 
   private
+
+  def get_user_id
+    # Default user for now. Will later be in the session.
+    1
+  end
 
   def build_scope
     @scope = Scope.new scope_params
@@ -44,6 +53,22 @@ class ScopesController < ApplicationController
       redirect_to items_scope_path @scope
     when 'whalewatch'
       redirect_to scope_observations_path @scope
+    end
+  end
+
+  def collect_activities
+    @activities = []
+    Scope.where(user_id: get_user_id).each do |scope|
+      item_count = Item.where(scope_id: scope.id).sum(:quantity)
+
+      @activities << {
+        scope_id: scope.id,
+        date: scope.pretty_printed_date,
+        place: scope.place_name,
+        beachclean: true,
+        items: item_count,
+        whalewatch: false
+      }
     end
   end
 end

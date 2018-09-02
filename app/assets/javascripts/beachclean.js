@@ -35,10 +35,20 @@ $(document).on('turbolinks:load', function (event) {
 
   $('.submit-log').on('click', function (event) {
     event.preventDefault();
-    
+
     $.ajax(window.location.pathname, {
       method: 'PATCH',
       data: { 'items': counter }
+    });
+  });
+
+  // Deleting log
+
+  $('.delete').on('click', function (event) {
+    event.preventDefault();
+
+    $.ajax(window.location.pathname, {
+      method: 'DELETE'
     });
   });
 });

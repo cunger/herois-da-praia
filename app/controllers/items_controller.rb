@@ -4,22 +4,25 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def edit
-  end
-
   def update
-    params[:items].each do |category, count|
+    items = params[:items] || []
+    items.each do |category, count|
       item = find_item(category)
       item.quantity = count
       item.save
     end
 
-    redirect_to beachclean_path
+    redirect_to root_path
+    # TODO redirect to thanks page
   end
 
   def destroy
     @items.each { |item| item.destroy }
     @scope.destroy
+
+    redirect_to root_path
+    # TODO ask for confirmation
+    # TODO redirect to scopes_path if the user came from there
   end
 
   private

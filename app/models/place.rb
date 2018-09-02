@@ -17,6 +17,10 @@ class Place
           :code => 'other',
           :fullName => 'Other'
 
+  declare :unknown,
+          :code => 'unknown',
+          :fullName => 'Unknown'          
+
   def self.as_select_options
     options = []
 
