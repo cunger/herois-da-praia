@@ -1,8 +1,8 @@
 %ul
 - @activities.each do |activity|
   %li.activity
-    = activity[:date]
-    = activity[:place]
+    = pretty_print_date(activity[:date])
+    = pretty_print_place(activity[:place])
     %ul
       - if activity[:beachclean]
         %li

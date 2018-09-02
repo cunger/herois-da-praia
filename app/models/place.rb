@@ -19,7 +19,13 @@ class Place
 
   declare :unknown,
           :code => 'unknown',
-          :fullName => 'Unknown'          
+          :fullName => 'Unknown'
+
+  def self.fullName(place)
+    self.coerce(place).fullName
+  rescue
+    'Unknown'
+  end
 
   def self.as_select_options
     options = []

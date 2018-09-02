@@ -63,8 +63,8 @@ class ScopesController < ApplicationController
 
       @activities << {
         scope_id: scope.id,
-        date: scope.pretty_printed_date,
-        place: scope.place_name,
+        date: scope.date,
+        place: scope.place,
         beachclean: true,
         items: item_count,
         whalewatch: false
