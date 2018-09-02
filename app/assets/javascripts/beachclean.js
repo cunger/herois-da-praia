@@ -34,9 +34,8 @@ $(document).on('turbolinks:load', function (event) {
   // Submitting items
 
   $('.submit-log').on('click', function (event) {
-    console.log(window.location.pathname);
-
-    // trigger rails submit with counter data
+    event.preventDefault();
+    
     $.ajax(window.location.pathname, {
       method: 'PATCH',
       data: { 'items': counter }

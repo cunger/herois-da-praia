@@ -2,7 +2,13 @@
   Olá, beach hero!
 
 %p
-  = link_to 'Beach clean', beachclean_path
+  = link_to 'New beach clean', new_scope_path(for: 'beachclean')
 
 %p
-  = link_to 'Whale watch', whalewatch_path
+  = link_to 'New whale observation', new_scope_path(for: 'whalewatch')
+
+%p
+  = link_to 'Previous activity', scopes_path
+
+%p
+  = link_to 'Analytics', analytics_path

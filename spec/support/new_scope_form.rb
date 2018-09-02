@@ -2,14 +2,14 @@ class NewScopeForm
   include Capybara::DSL
 
   def visit_from_beachclean
-    visit('/beachclean')
+    visit('/')
     click_on('New beach clean')
     self
   end
 
   def visit_from_whalewatch
-    visit('/whalewatch')
-    click_on('New observation')
+    visit('/')
+    click_on('New whale observation')
     self
   end
 
