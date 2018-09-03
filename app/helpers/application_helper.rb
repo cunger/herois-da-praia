@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def pretty_print_place(place)
-    Place.fullName(place)
+    Place.full_name(place)
   end
 end

@@ -3,19 +3,23 @@ require 'enumerated_type'
 class UserGroup
   include EnumeratedType
 
-  declare :LTOstaff,
+  declare :lto_staff,
           :code => 'lto_staff',
-          :fullName => 'LTO staff'
+          :full_name => 'LTO staff'
 
-  declare :LTOvolunteer,
+  declare :lto_volunteer,
           :code => 'lto_volunteer',
-          :fullName => 'LTO volunteer'
+          :full_name => 'LTO volunteer'
 
   declare :resident,
           :code => 'resident',
-          :fullName => 'Resident'
+          :full_name => 'Resident'
 
   declare :visitor,
           :code => 'visitor',
-          :fullName => 'Visitor'
+          :full_name => 'Visitor'
+
+  def self.full_name(group)
+    self.coerce(group).full_name
+  end
 end

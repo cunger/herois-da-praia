@@ -31,4 +31,7 @@ class ItemCategory
           :code => 'lighter',
           :full_name => 'Lighter'
 
+  def self.full_name(category)
+    self.coerce(category).full_name
+  end
 end

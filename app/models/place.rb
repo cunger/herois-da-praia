@@ -7,22 +7,22 @@ class Place
 
   declare :guinjata,
           :code => 'guinjata',
-          :fullName => 'Guinjata'
+          :full_name => 'Guinjata'
 
   declare :paindane,
           :code => 'paindane',
-          :fullName => 'Paindane'
+          :full_name => 'Paindane'
 
   declare :other,
           :code => 'other',
-          :fullName => 'Other'
+          :full_name => 'Other'
 
   declare :unknown,
           :code => 'unknown',
-          :fullName => 'Unknown'
+          :full_name => 'Unknown'
 
-  def self.fullName(place)
-    self.coerce(place).fullName
+  def self.full_name(place)
+    self.coerce(place).full_name
   rescue
     'Unknown'
   end
@@ -31,7 +31,7 @@ class Place
     options = []
 
     self.each do |place|
-      options << [place.fullName, place.code]
+      options << [place.full_name, place.code]
     end
 
     options

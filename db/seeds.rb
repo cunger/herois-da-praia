@@ -1,4 +1,4 @@
 User.create!(
   name: 'Momo',
-  group: :LTOstaff
+  group: :lto_staff
 )
