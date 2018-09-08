@@ -5,8 +5,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    items = params[:items] || []
+    items = params.require(:items).permit!
     items.each do |category, count|
+      next if count == '0'
       item = find_item(category)
       item.quantity = count
       item.save
