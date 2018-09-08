@@ -2,15 +2,10 @@ require 'rails_helper'
 require_relative '../support/new_scope_form'
 
 feature 'Log items:' do
-  let(:create_new_scope) {
-    NewScopeForm.new.visit_from_beachclean.fill_in_with(
-      date: '2019-01-01',
-      place: 'Guinjata'
-    ).submit
-  }
+  let(:scope) { FactoryBot.create(:scope) }
 
   scenario 'clicking on name, plus, and minus changes the count', js: true do
-    create_new_scope
+    visit items_scope_path(scope)
 
     ItemCategory.each do |category|
       name_node  = find(".item-component", text: category.full_name)
@@ -26,11 +21,5 @@ feature 'Log items:' do
       minus_node.click
       count_node.assert_text('1')
     end
-  end
-
-  scenario 'clicking on Save sends PATCH items' do
-  end
-
-  scenario 'clicking on Delete sends DELETE items' do
   end
 end
