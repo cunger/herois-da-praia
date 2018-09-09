@@ -9,9 +9,13 @@
 
   %fieldset.horizontal
     %legend Places
-    - Place.each do |place|
-      = check_box_tag(place.code)
-      = place.full_name
+    = check_box_tag('guinjata')
+    Guinjata
+    = check_box_tag('paindane')
+    Paindane
+    -# - Place.each do |place|
+    -#   = check_box_tag(place.code)
+    -#   = place.full_name
 
   %fieldset.horizontal
     %legend People

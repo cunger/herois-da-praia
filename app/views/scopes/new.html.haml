@@ -1,3 +1,8 @@
+- if @destination == 'beachclean'
+  %h3 New beach clean
+- if @destination == 'whalewatch'
+  %h3 New whale watch
+
 = form_for @scope do |form|
   = hidden_field_tag :for, @destination
   = form.hidden_field :user_id, :value => User.default.id

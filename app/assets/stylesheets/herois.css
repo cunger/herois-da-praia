@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+ /* @import url('https://fonts.googleapis.com/css?family=Montserrat'); */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/Montserrat-Regular.otf') format('opentype');
+}
 
 /* LAYOUT */
 
@@ -36,7 +41,7 @@ footer {
 /* STYLE */
 
 body {
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 header > img,
@@ -83,6 +88,10 @@ li {
   color: #d8000c;
 }
 
+em {
+  font-style: italic;
+}
+
 /* Links and buttons */
 
 a {
@@ -93,11 +102,19 @@ a {
 
 a.item,
 a.activity {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .buttons {
   text-align: center;
+}
+
+button,
+input[type='submit'] {
+  margin-top: 20px;
+  font-family: inherit;
+  font-size: inherit;
+  text-transform: uppercase;
 }
 
 .submit-log,
@@ -108,6 +125,14 @@ a.activity {
 
 /* Forms */
 
+h3,
+legend {
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom: 2px solid #6ec1e4;
+  text-transform: uppercase;
+}
 
 label,
 input {
@@ -124,19 +149,8 @@ fieldset.horizontal input {
   display: inline-block;
 }
 
-legend {
-  text-transform: uppercase;
-  padding: 10px 0;
-}
-
 label {
   margin-top: 10px;
-}
-
-input[type=submit] {
-  margin-top: 20px;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  font-weight: bold;
 }
 
 /* Items list */
