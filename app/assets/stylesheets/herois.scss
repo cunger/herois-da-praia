@@ -158,6 +158,15 @@ ul {
   padding: 0;
 }
 
+li.activity {
+  border-bottom: 2px solid #6ec1e4;
+  color: #6f6f6f;
+}
+
+li.activity li {
+  margin: 10px 0;
+}
+
 li.item {
   display: flex;
   justify-content: space-between;

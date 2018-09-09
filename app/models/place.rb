@@ -17,10 +17,6 @@ class Place
           :code => 'other',
           :full_name => 'Other'
 
-  declare :unknown,
-          :code => 'unknown',
-          :full_name => 'Unknown'
-
   def self.full_name(place)
     self.coerce(place).full_name
   rescue
