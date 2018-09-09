@@ -1,9 +1,4 @@
- /* @import url('https://fonts.googleapis.com/css?family=Montserrat'); */
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/assets/Montserrat-Regular.otf') format('opentype');
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat'); 
 
 /* LAYOUT */
 
