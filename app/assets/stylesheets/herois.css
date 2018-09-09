@@ -107,9 +107,25 @@ a.activity {
 
 /* Forms */
 
+
 label,
 input {
   display: block;
+}
+
+fieldset {
+  border: 0;
+  margin: 10px 0;
+}
+
+fieldset.horizontal label,
+fieldset.horizontal input {
+  display: inline-block;
+}
+
+legend {
+  text-transform: uppercase;
+  padding: 10px 0;
 }
 
 label {

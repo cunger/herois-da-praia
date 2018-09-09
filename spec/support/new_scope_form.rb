@@ -9,7 +9,7 @@ class NewScopeForm
 
   def visit_from_whalewatch
     visit('/')
-    click_on('New whale observation')
+    click_on('New whale watch')
     self
   end
 

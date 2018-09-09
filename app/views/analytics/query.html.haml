@@ -1,0 +1,18 @@
+Time period:
+from #{pretty_print_date(@data[:start_date])}
+to #{pretty_print_date(@data[:end_date])}
+
+%h3 Total
+
+%ul
+  %li #{@data[:totals][:scopes]} beach cleans
+  %li #{@data[:totals][:items]} collected items
+  %li #{@data[:totals][:weight].round(2)} kg
+
+%h3 Per group
+
+Coming soon.
+
+%h3 Per place
+
+Coming soon.

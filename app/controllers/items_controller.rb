@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    items = params.require(:items).permit!
     items.each do |category, count|
       next if count == '0'
       item = find_item(category)
@@ -30,6 +29,11 @@ class ItemsController < ApplicationController
 
   def scope_id
     params[:id]
+  end
+
+  def items
+    items = params[:items]
+    items ? items.permit! : []
   end
 
   def get_scope

@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', function (event) {
 
   // Deleting log
 
-  $('.delete').on('click', function (event) {
+  $('.delete-log').on('click', function (event) {
     event.preventDefault();
 
     $.ajax(window.location.pathname, {

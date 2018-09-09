@@ -39,9 +39,10 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara', '>= 2.15'
   gem 'capybara-webkit'
-  # gem 'selenium-webdriver'
-  # gem 'chromedriver-helper'
-  # gem 'geckodriver-helper'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

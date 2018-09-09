@@ -1,12 +1,12 @@
 = form_for @scope do |form|
-  = form.hidden_field :for, :value => @destination
+  = hidden_field_tag :for, @destination
   = form.hidden_field :user_id, :value => User.default.id
 
   - if flash[:date_missing]
     = form.label :date, 'Date (required)', { class: 'error' }
   - else
     = form.label :date, 'Date'
-  = form.date_field :date, default: Time.now.strftime("%Y-%m-%d")
+  = form.date_field :date, value: Time.now.strftime("%Y-%m-%d")
 
   = form.label :place, 'Place'
   = form.select :place, Place.as_select_options, { include_blank: true, selected: nil }

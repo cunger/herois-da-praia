@@ -1,2 +1,23 @@
 
-Analytics will be here soon!
+= form_tag('/analytics/query') do
+  %fieldset.horizontal
+    %legend Time period
+    = label_tag :startDate, 'From:'
+    = date_field_tag :startDate, Time.now.strftime("%Y-%m-%d")
+    = label_tag :endDate, 'To:'
+    = date_field_tag :endDate, Time.now.strftime("%Y-%m-%d")
+
+  %fieldset.horizontal
+    %legend Places
+    - Place.each do |place|
+      = check_box_tag(place.code)
+      = place.full_name
+
+  %fieldset.horizontal
+    %legend People
+    - UserGroup.each do |group|
+      = check_box_tag(group.code)
+      = group.full_name
+      %br
+
+  = submit_tag 'Get data'

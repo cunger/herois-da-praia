@@ -28,10 +28,10 @@ feature 'Start logging' do
     expect(page).to have_current_path(scope_observations_path(Scope.last.id))
   end
 
-  scenario 'a new scope without filling in the date field is invalid' do
+  scenario 'a new scope without filling in the date field assumes today as default' do
     new_scope_form.visit_from_beachclean.fill_in_with().submit
 
-    expect(Scope.last).to be_nil
+    expect(Scope.last.date.strftime("%Y-%m-%d")).to eq(Time.now.strftime("%Y-%m-%d"))
   end
 
   scenario 'a new scope without filling in the place field is fine' do
