@@ -10,11 +10,11 @@ gem 'turbolinks', '~> 5'
 
 gem 'haml-rails'
 gem 'font-awesome-rails'
-
-gem 'active_record_enumerated_type'
-
+gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier', '>= 1.3.0'
+
+gem 'active_record_enumerated_type'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

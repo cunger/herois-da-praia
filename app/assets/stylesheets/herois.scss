@@ -1,4 +1,7 @@
-@import url('//fonts.googleapis.com/css?family=Montserrat');
+@font-face {
+  font-family: "Montserrat";
+  src: url(asset_path("Montserrat-Regular.otf")) format("opentype");
+}
 
 /* LAYOUT */
 
