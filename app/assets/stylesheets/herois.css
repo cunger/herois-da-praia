@@ -54,7 +54,8 @@ body {
 header,
 footer {
   padding: 10px;
-  background-color: #cff6f2;
+  /* background-color: #cff6f2; */
+  background-color: #6ec1e4;
 }
 
 header {
@@ -148,9 +149,10 @@ ul {
 li.item {
   display: flex;
   justify-content: space-between;
-  background-color: #e8fcfa;
-  margin: 6px 0;
+  background-color: #bde9fc;
+  margin: 8px 0;
   padding: 0 6px;
+  border-radius: 5px;
 }
 
 .item-component {
