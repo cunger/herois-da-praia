@@ -13,15 +13,15 @@ class ItemCategory
           :full_name => 'Plastic bottle',
           :weight => 0.03
 
-  declare :fishing_gear,
-          :code => 'fishing_gear',
-          :full_name => 'Fishing gear',
-          :weight => 0.02
-
   declare :bottle_cap,
           :code => 'bottle_cap',
           :full_name => 'Bottle cap/lid',
           :weight => 0.008
+
+  declare :fishing_gear,
+          :code => 'fishing_gear',
+          :full_name => 'Fishing gear',
+          :weight => 0.02
 
   declare :cigarette_butt,
           :code => 'cigarette_butt',
@@ -32,6 +32,11 @@ class ItemCategory
           :code => 'toothbrush',
           :full_name => 'Toothbrush',
           :weight => 0.08
+
+  declare :shoe,
+          :code => 'shoe',
+          :full_name => 'Shoe',
+          :weight => 0.03
 
   declare :lighter,
           :code => 'lighter',

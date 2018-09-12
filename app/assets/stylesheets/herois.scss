@@ -57,8 +57,11 @@ body {
 header,
 footer {
   padding: 10px;
-  /* background-color: #cff6f2; */
-  background-color: #6ec1e4;
+  background-color: #6da3c7;
+}
+
+main {
+  background-color: #f2f2f2;
 }
 
 header {
@@ -110,15 +113,22 @@ a.activity {
 button,
 input[type='submit'] {
   margin-top: 20px;
+  padding: 10px;
   font-family: inherit;
   font-size: inherit;
+  font-weight: bold;
   text-transform: uppercase;
+  color: #fff;
+  background-color: #6da3c7;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .submit-log,
 .delete-log {
   display: inline-block;
-  margin: 40px 2px;
+  margin: 40px 8px;
 }
 
 /* Forms */
@@ -170,9 +180,9 @@ li.activity li {
 li.item {
   display: flex;
   justify-content: space-between;
-  background-color: #bde9fc;
+  background-color: #fff;
   margin: 8px 0;
-  padding: 0 6px;
+  padding: 10px;
   border-radius: 5px;
 }
 
