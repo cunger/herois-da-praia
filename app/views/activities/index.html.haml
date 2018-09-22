@@ -6,7 +6,7 @@
     %ul
       - if activity[:beachclean]
         %li
-          = link_to "Beach clean (#{activity[:items]} items)", items_scope_path(activity[:scope_id]), { class: 'activity' }
+          = link_to "Beach clean (#{activity[:items]} items)", items_path(activity[:log_id]), { class: 'activity' }
       - if activity[:whalewatch]
         %li
-          = link_to 'Observations', scope_observations_path(activity[:scope_id]), { class: 'activity' }
+          = link_to 'Observations', observations_path(activity[:log_id]), { class: 'activity' }

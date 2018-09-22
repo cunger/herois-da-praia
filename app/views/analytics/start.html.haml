@@ -8,14 +8,9 @@
     = date_field_tag :endDate, Time.now.strftime("%Y-%m-%d")
 
   %fieldset.horizontal
-    %legend Places
-    - Place.each do |place|
-      = check_box_tag(place.code)
-      = place.full_name
-
-  %fieldset.horizontal
     %legend People
     - UserGroup.each do |group|
+      - next if group.code == 'dev'
       = check_box_tag(group.code)
       = group.full_name
       %br

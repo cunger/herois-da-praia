@@ -19,6 +19,10 @@ class UserGroup
           :code => 'visitor',
           :full_name => 'Visitor'
 
+  declare :dev,
+          :code => 'dev',
+          :full_name => 'Developer'
+
   def self.full_name(group)
     self.coerce(group).full_name
   end

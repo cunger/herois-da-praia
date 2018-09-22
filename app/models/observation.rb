@@ -1,3 +1,3 @@
 class Observation < ApplicationRecord
-  belongs_to :scope
+  belongs_to :whalewatch
 end

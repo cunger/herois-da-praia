@@ -1,0 +1,13 @@
+%h3 New beach clean
+
+= form_for @beachclean do |form|
+  - if flash[:date_missing]
+    = form.label :date, 'Date (required)', { class: 'error' }
+  - else
+    = form.label :date, 'Date'
+  = form.date_field :date, value: Time.now.strftime("%Y-%m-%d")
+
+  = form.label :place_id, 'Place'
+  = form.select :place_id, Place.select_options, { include_blank: true, selected: nil }
+
+  = form.submit 'Start logging', { id: 'js-create-beachclean' }

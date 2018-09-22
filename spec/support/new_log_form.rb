@@ -1,4 +1,4 @@
-class NewScopeForm
+class NewLogForm
   include Capybara::DSL
 
   def visit_from_beachclean

@@ -1,11 +1,11 @@
 require 'rails_helper'
-require_relative '../support/new_scope_form'
+require_relative '../support/new_log_form'
 
 feature 'Log items:' do
-  let(:scope) { FactoryBot.create(:scope) }
+  let(:log) { FactoryBot.create(:log) }
 
   scenario 'clicking on name, plus, and minus changes the count', js: true do
-    visit items_scope_path(scope)
+    visit items_path(log)
 
     ItemCategory.each do |category|
       name_node  = find(".item-component", text: category.full_name)

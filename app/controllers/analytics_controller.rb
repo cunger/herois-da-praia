@@ -5,23 +5,22 @@ class AnalyticsController < ApplicationController
   def query
     start_date = params[:startDate]
     end_date = params[:endDate]
-    places = checked(Place)
-    groups = checked(UserGroup)
+    groups = selected(UserGroup)
 
     @data = {
       start_date: start_date,
       end_date: end_date,
-      totals: { scopes: 0, items: 0, weight: 0 },
+      totals: { beachcleans: 0, items: 0, weight: 0 },
       counts: {}
     }
 
-    results = query_items(start_date, end_date, places, groups)
+    results = query_items(start_date, end_date, groups)
     results.each do |item|
       @data[:totals][:items] += item.quantity
       @data[:totals][:weight] += item.weight
     end
 
-    @data[:totals][:scopes] = results.distinct.count(:scope_id)
+    @data[:totals][:beachcleans] = results.distinct.count(:beachclean)
   end
 
   def view
@@ -29,13 +28,14 @@ class AnalyticsController < ApplicationController
 
   private
 
-  def checked(enum)
+  def selected(enum)
     enum.select { |e| params[e.code] == '1' }.map(&:code)
   end
 
-  def query_items(start_date, end_date, places, groups)
-    Item.joins(:scope)
+  def query_items(start_date, end_date, groups)
+    Item.joins(:beachcleans)
+        .joins(:users)
         .where('date BETWEEN ? AND ?', start_date, end_date)
-        .where('place IN (?)', places)
+        .where('group IN (?)', groups)
   end
 end

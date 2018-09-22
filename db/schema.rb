@@ -10,46 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_073704) do
+ActiveRecord::Schema.define(version: 2018_09_22_112241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "beachcleans", force: :cascade do |t|
+    t.string "uuid"
+    t.date "date"
+    t.bigint "place_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "verified"
+    t.index ["place_id"], name: "index_beachcleans_on_place_id"
+    t.index ["user_id"], name: "index_beachcleans_on_user_id"
+  end
+
   create_table "items", force: :cascade do |t|
-    t.bigint "scope_id"
+    t.bigint "beachclean_id"
     t.string "category"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["scope_id"], name: "index_items_on_scope_id"
+    t.index ["beachclean_id"], name: "index_items_on_beachclean_id"
   end
 
-  create_table "observations", force: :cascade do |t|
-    t.bigint "scope_id"
-    t.string "species"
-    t.string "behaviour"
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["scope_id"], name: "index_observations_on_scope_id"
-  end
-
-  create_table "scopes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "place"
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_scopes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "group"
+    t.string "email"
+    t.string "encrypted_password"
+    t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "items", "scopes"
-  add_foreign_key "observations", "scopes"
-  add_foreign_key "scopes", "users"
+  add_foreign_key "beachcleans", "places"
+  add_foreign_key "beachcleans", "users"
+  add_foreign_key "items", "beachcleans"
 end
