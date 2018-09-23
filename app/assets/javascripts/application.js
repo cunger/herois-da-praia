@@ -16,7 +16,11 @@
 //= require turbolinks
 //= require pouchdb-7.0.0.min.js
 //= require pouchdb.find.min.js
-//= require herois-aux
+//= require herois-shared
+//= require herois-start
+//= require herois-new-beachclean
+//= require herois-show-beachclean
+//= require herois-thanks
 //= require herois
 
 // use sw-toolbox.js (add to assets/javascripts)

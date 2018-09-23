@@ -1,8 +1,15 @@
-function isViewFor(controller, action) {
-  return !!$('body' +
-    '[data-controller="' + controller + '"]' +
-    '[data-action="' + action + '"]'
-  ).length;
+/**
+ * Local, client-side database for storing all logged data
+ * until it is submitted to the server.
+ */
+var database = new PouchDB('herois-da-praia');
+
+/**
+ * Get the current user from the database. If it's the first encounter,
+ * create a new user and store the info in the database.
+ */
+function currentUser() {
+  // TODO
 }
 
 /**
