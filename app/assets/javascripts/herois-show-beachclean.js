@@ -35,7 +35,7 @@ function promiseToSaveItems(uuid) {
   ).then(function () {
     allUpdatesAreSaved = true;
   })
-  .catch(console.log.bind(console));
+  .catch(console.log);
 }
 
 /**
@@ -102,7 +102,7 @@ function saveButton() {
     var uuid = window.location.pathname.split('/')[2];
 
     promiseToSaveItems(uuid)
-    .catch(console.log.bind(console));
+    .catch(console.log);
   });
 }
 
@@ -153,15 +153,15 @@ function submitButton() {
       .then(function (items) {
         submit(beachclean, items.docs);
       })
-      .catch(console.log.bind(console));
+      .catch(console.log);
     })
-    .catch(console.log.bind(console));
+    .catch(console.log);
   });
 }
 
 /**
  * Attach a handler to the "Delete" button that deletes the log
- * both in the local database and on the server (if the user is online).
+ * in the local database.
  */
 function deleteButton() {
   $('#js-delete-beachclean').on('click', function (event) {
@@ -169,19 +169,13 @@ function deleteButton() {
 
     var uuid = window.location.pathname.split('/')[2];
 
-    // TODO Delete beachclean from PouchDB.
-
     database.get(uuid)
     .then(function (beachclean) {
-      $.ajax(window.location.pathname, {
-        method: 'DELETE',
-        success: function (result) {
-          document.location.href = '/';
-        }
-      });
+      return database.remove(beachclean);
     })
-    .catch(function (error) {
-      console.log(error); // TODO
-    });
+    .then(function () {
+      document.location.href = '/';
+    })
+    .catch(console.log);
   });
 }
