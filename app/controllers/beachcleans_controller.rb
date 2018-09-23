@@ -19,15 +19,21 @@ class BeachcleansController < ApplicationController
     @items = all_items
   end
 
-  def update
-    p params
-    # TODO params[:beachclean]
-    # TODO params[:items]
-
-    redirect_to submit_beachclean_path(@beachclean)
-  end
-
   def submit
+    # TODO find_user || new_user 
+
+    @beachclean = find_beachclean || new_beachclean
+    @beachclean.update beachclean_params
+
+    params['items'].each_pair do |_, item|
+      category = item['category']
+      quantity = item['quantity'].to_i
+
+      item = find_item(category) || new_item(category)
+      item.update(quantity: quantity)
+    end
+
+    redirect_to verify_beachclean_path(uuid)
   end
 
   def verify
@@ -48,8 +54,9 @@ class BeachcleansController < ApplicationController
   end
 
   def beachclean_params
-    beachclean_params = params[:beachclean]
-    beachclean_params ? beachclean_params.permit(:date, :place_id, :user_id, :verified) : {}
+    params.fetch(:beachclean, {})
+          .permit(:uuid, :date, :place_id, :user_id, :verified)
+          .merge({ uuid: uuid })
   end
 
   def check_date
@@ -61,9 +68,7 @@ class BeachcleansController < ApplicationController
   end
 
   def new_beachclean
-    beachclean = Beachclean.new beachclean_params
-    beachclean.uuid = uuid
-    beachclean
+    Beachclean.new beachclean_params
   end
 
   def find_item(category)

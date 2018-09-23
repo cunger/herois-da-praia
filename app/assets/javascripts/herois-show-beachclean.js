@@ -1,38 +1,41 @@
 
 var allUpdatesAreSaved = true;
 var counter = {};
-var counterElement;
-var category;
 
 /**
  * Saving item counts stored in `counter` to the database.
  */
-function saveItems(uuid) {
-  Object.getOwnPropertyNames(counter).forEach(function (category) {
-    var quantity = counter[category];
-    if (quantity == 0) return;
+function promiseToSaveItems(uuid) {
+  if (allUpdatesAreSaved) return Promise.resolve(true);
 
-    var item = {
-      model: 'item',
-      beachclean_uuid: uuid,
-      category: category
-    };
+  return Promise.all(
+    Object.getOwnPropertyNames(counter).map(function (category) {
+      var quantity = counter[category];
+      if (quantity == 0) return;
 
-    database.find({ selector: item })
-    .then(function (result) {
-      if (result && result.docs.length > 0) {
-        item = result.docs[0];
-        item['quantity'] = quantity;
-        database.put(item);
-      } else {
-        item['quantity'] = quantity;
-        database.post(item);
-      }
-    });
-  });
+      var item = {
+        model: 'item',
+        beachclean_uuid: uuid,
+        category: category
+      };
 
-  allUpdatesAreSaved = true;
-  // TODO inactivate Save button
+      return database
+        .find({ selector: item })
+        .then(function (result) {
+          if (result && result.docs.length > 0) {
+            item = result.docs[0];
+            item['quantity'] = quantity;
+            return database.put(item);
+          } else {
+            item['quantity'] = quantity;
+            return database.post(item);
+          }
+        });
+    })
+  ).then(function () {
+    allUpdatesAreSaved = true;
+  })
+  .catch(console.log.bind(console));
 }
 
 /**
@@ -52,8 +55,9 @@ function initCounts() {
     result.docs.forEach(function (item) {
       var category = item['category'];
       var quantity = item['quantity'];
+      var counterElement = $('.count[data-item-category="' + category + '"]');
+
       counter[category] = quantity;
-      counterElement = $('.count[data-item-category="' + category + '"]');
       counterElement.text(quantity);
     });
   });
@@ -68,8 +72,9 @@ function attachHandlersForCountingItems() {
   $('a.item').on('click', function (event) {
     event.preventDefault();
 
-    category = event.currentTarget.dataset.itemCategory;
-    counterElement = $('.count[data-item-category="' + category + '"]');
+    var category = event.currentTarget.dataset.itemCategory;
+    var counterElement = $('.count[data-item-category="' + category + '"]');
+
     counter[category] = parseInt(counterElement.text());
 
     if ($(event.target).hasClass('count')) { return; }
@@ -96,14 +101,37 @@ function saveButton() {
 
     var uuid = window.location.pathname.split('/')[2];
 
-    if (!allUpdatesAreSaved) saveItems(uuid);
+    promiseToSaveItems(uuid)
+    .catch(console.log.bind(console));
+  });
+}
+
+/**
+ * Function for submitting beachclean data to the server.
+ * Sends the locally stored beachclean and its corresponding items
+ * as an Ajax request, and then redirects to the corresponding './submit' page.
+ */
+function submit(beachclean, items) {
+  $.ajax(window.location.pathname + '/submit', {
+    method: 'POST',
+    data: {
+      'beachclean': beachclean,
+      'items': items
+    },
+    success: function (response) {
+      console.log(response);
+      // document.location.href = window.location.pathname + '/submit';
+    },
+    error: function (response) {
+      console.log(response);
+      // TODO Probably you're offline? Try again when online.
+    }
   });
 }
 
 /**
  * Attach a handler to the "Submit" button that sends the item counts
- * stored in `counter` to the server as an Ajax request, and then
- * redirects to the corresponding './submit' page.
+ * stored in `counter` to the server
  */
 function submitButton() {
   $('#js-submit-beachclean').on('click', function (event) {
@@ -111,50 +139,35 @@ function submitButton() {
 
     var uuid = window.location.pathname.split('/')[2];
 
-    if (!allUpdatesAreSaved) saveItems(uuid);
-
-    // Retrieve info about the beach clean.
-    var beachclean;
-    database.get(uuid)
-    .then(function (result) {
-      beachclean = result;
-    });
-
-    // Retrieve all items belonging to that beach clean.
-    var items = [];
-    database.find({ selector: {
-      model: 'item',
-      beachclean_uuid: uuid
-    }})
-    .then(function (result) {
-      items.add(result);
-    });
-
-    // Submit both to the server.
-    $.ajax(window.location.pathname, {
-      method: 'PATCH',
-      data: { 'beachclean': beachclean,
-              'items': items },
-      success: function (result) {
-        document.location.href = window.location.pathname + '/submit';
-      },
-      error: function (response) {
-        console.log(response);
-      }
-    });
-    // TODO If Ajax request fails because of network,
-    //      tell the user to try again once s/he is online.
+    promiseToSaveItems(uuid)
+    .then(function () {
+      return database.get(uuid);
+    })
+    .then(function (beachclean) {
+      database.find({
+        selector: {
+          model: 'item',
+          beachclean_uuid: uuid
+        }
+      })
+      .then(function (items) {
+        submit(beachclean, items.docs);
+      })
+      .catch(console.log.bind(console));
+    })
+    .catch(console.log.bind(console));
   });
 }
 
-// Deleting log.
+/**
+ * Attach a handler to the "Delete" button that deletes the log
+ * both in the local database and on the server (if the user is online).
+ */
 function deleteButton() {
   $('#js-delete-beachclean').on('click', function (event) {
     event.preventDefault();
 
     var uuid = window.location.pathname.split('/')[2];
-
-    console.log('Deleting beach clean...');
 
     // TODO Delete beachclean from PouchDB.
 

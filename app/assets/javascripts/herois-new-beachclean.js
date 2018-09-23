@@ -1,4 +1,8 @@
 function startLoggingButton() {
+  function currentUserUUID() {
+    return 1;
+  }
+
   // Click on the 'Start Logging' button will create a new beach clean
   // and store it in the client-side database.
   $('#js-create-beachclean').on('click', function (event) {
@@ -9,6 +13,7 @@ function startLoggingButton() {
       model: 'beachclean',
       date: $('#beachclean_date').val(),
       place_id: $('#beachclean_place_id').val(),
+      user_id: currentUserUUID(),
       submitted: false
     }
 

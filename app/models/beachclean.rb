@@ -4,4 +4,5 @@ class Beachclean < ApplicationRecord
   has_many :items, :dependent => :destroy
 
   validates :date, presence: true
+  validates :uuid, presence: true
 end
