@@ -8,9 +8,9 @@
 
 %p
   If you want to enable us to use your data in our research,
-  we'd appreciate if you signed it. 
+  we'd appreciate if you signed it.
 
-= form_tag(verify_beachclean_path(@beachclean.uuid)) do
+= form_tag('/beachcleans/' + @beachclean.uuid + '/sign', method: 'POST') do
   I am a
   %ul
     %li

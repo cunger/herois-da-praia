@@ -34,16 +34,21 @@ class BeachcleansController < ApplicationController
       item.update(quantity: quantity)
     end
 
-    redirect_to verify_beachclean_path(uuid)
+    redirect_to beachclean_sign_path(uuid)
   end
 
-  def verify
+  def new_signature
+    @beachclean = find_beachclean
+    @estimated_weight = @beachclean.estimated_weight
+  end
+
+  def create_signature
     @beachclean = find_beachclean
     @user = User.find(@beachclean.user_id)
-    @estimated_weight = @beachclean.estimated_weight
 
     # TODO update user info
-    # TODO upon POST: mark the beach clean as verified
+    # TODO  mark the beach clean as verified
+    # Parameters: {"utf8"=>"✓", "authenticity_token"=>"gLo5bpuAQ0iS0pkArpJyNsxQvMfVhkizzs4fEYlslXL5ZObvUQw0ELrYZNEeENhSWBRZnu3pMZg0xtfDFAxT8Q==", "group"=>"visitor", "name"=>"Christina", "email"=>"", "commit"=>"Sign beach clean", "beachclean_uuid"=>"81e81d9d-716c-8cce-40e6-bf3c64da4efe"}
   end
 
   def thanks
@@ -56,7 +61,7 @@ class BeachcleansController < ApplicationController
   private
 
   def uuid
-    params[:uuid]
+    params[:uuid] || params[:beachclean_uuid]
   end
 
   def user_uuid
