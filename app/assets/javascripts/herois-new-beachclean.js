@@ -1,28 +1,27 @@
 function startLoggingButton() {
-  function currentUserUUID() {
-    return 1;
-  }
-
   // Click on the 'Start Logging' button will create a new beach clean
   // and store it in the client-side database.
   $('#js-create-beachclean').on('click', function (event) {
     event.preventDefault();
 
-    var beachclean = {
-      _id: randomId(),
-      model: 'beachclean',
-      date: $('#beachclean_date').val(),
-      place_id: $('#beachclean_place_id').val(),
-      user_id: currentUserUUID(),
-      submitted: false
-    }
-
-    database.put(beachclean)
-    .then(function (response) {
-      document.location.href = '/beachcleans/' + beachclean._id;
+    currentUser()
+    .then(function (user) {
+      return {
+        _id: randomId(),
+        model: 'beachclean',
+        date: $('#beachclean_date').val(),
+        place_id: $('#beachclean_place_id').val(),
+        user_uuid: user._id,
+        submitted: false
+      };
     })
-    .catch(function (error) {
-      console.log(error); // TODO
-    });
+    .then(function (beachclean) {
+      database.put(beachclean)
+      .then(function () {
+        document.location.href = '/beachcleans/' + beachclean._id;
+      })
+      .catch(console.log);
+    })
+    .catch(console.log);
   });
 }

@@ -143,6 +143,10 @@ input {
   display: block;
 }
 
+input[type='radio'] {
+  display: inline-block;
+}
+
 fieldset {
   border: 0;
   margin: 10px 0;

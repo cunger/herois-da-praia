@@ -20,10 +20,11 @@ class BeachcleansController < ApplicationController
   end
 
   def submit
-    # TODO find_user || new_user 
-
-    @beachclean = find_beachclean || new_beachclean
-    @beachclean.update beachclean_params
+    @user = find_user(user_uuid) || new_user(user_uuid)
+    p @user
+    @beachclean = find_beachclean || new_beachclean(@user.id)
+    p @beachclean
+    @beachclean.update beachclean_params.merge({ user_id: @user.id })
 
     params['items'].each_pair do |_, item|
       category = item['category']
@@ -37,7 +38,12 @@ class BeachcleansController < ApplicationController
   end
 
   def verify
-    # TODO take user credentials and mark the beach clean as verified
+    @beachclean = find_beachclean
+    @user = User.find(@beachclean.user_id)
+    @estimated_weight = @beachclean.estimated_weight
+
+    # TODO update user info
+    # TODO upon POST: mark the beach clean as verified
   end
 
   def thanks
@@ -51,6 +57,10 @@ class BeachcleansController < ApplicationController
 
   def uuid
     params[:uuid]
+  end
+
+  def user_uuid
+    params[:beachclean][:user_uuid]
   end
 
   def beachclean_params
@@ -67,8 +77,16 @@ class BeachcleansController < ApplicationController
     Beachclean.where(uuid: uuid).take
   end
 
-  def new_beachclean
-    Beachclean.new beachclean_params
+  def new_beachclean(user_id = User.default.id)
+    Beachclean.create beachclean_params.merge({ user_id: user_id })
+  end
+
+  def find_user(user_uuid)
+    User.where(uuid: user_uuid).take
+  end
+
+  def new_user(user_uuid)
+    User.create({ uuid: user_uuid })
   end
 
   def find_item(category)
@@ -84,8 +102,6 @@ class BeachcleansController < ApplicationController
     ItemCategory.each do |category|
       items << (find_item(category.code) || new_item(category.code))
     end
-    p items
     items
   end
-
 end

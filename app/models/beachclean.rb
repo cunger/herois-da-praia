@@ -5,4 +5,13 @@ class Beachclean < ApplicationRecord
 
   validates :date, presence: true
   validates :uuid, presence: true
+
+  def place
+    Place.find(place_id)
+  end
+
+  def estimated_weight
+    Item.where(beachclean_id: id)
+        .reduce(0) { |sum, item| sum + item.weight }
+  end
 end

@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def pretty_print_place(place)
-    Place.full_name(place)
+    place.nil? ? 'unknown' : place.name
   end
 end

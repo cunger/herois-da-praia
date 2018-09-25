@@ -1,4 +1,9 @@
 User.create!(
+  name: 'DEFAULT',
+  group: :visitor
+)
+
+User.create!(
   name: 'Christina',
   email: 'buoyantcode@gmail.com',
   group: :dev

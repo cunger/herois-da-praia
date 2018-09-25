@@ -10,15 +10,15 @@ Rails.application.routes.draw do
 
   resources :beachcleans, only: [:new, :show, :create, :destroy], param: :uuid do
     post :submit, on: :member
-    get  :verify, on: :member
-    post :verify, on: :member
+    get  :sign,   on: :member
+    post :sign,   on: :member
     get  :thanks, on: :member
   end
 
   resources :whalewatches, only: [:new, :show, :create, :destroy], param: :uuid do
     post :submit, on: :member
-    get  :verify, on: :member
-    post :verify, on: :member
+    get  :sign,   on: :member
+    post :sign,   on: :member
     get  :thanks, on: :member
   end
 
