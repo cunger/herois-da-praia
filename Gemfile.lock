@@ -71,6 +71,8 @@ GEM
     enumerated_type (0.5.0)
     erubi (1.7.1)
     erubis (2.7.0)
+    es6-promise-rails (3.2.1)
+      railties (>= 3.1.0)
     execjs (2.7.0)
     factory_bot (4.11.0)
       activesupport (>= 3.0.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   capybara-webkit
   database_cleaner
+  es6-promise-rails
   factory_bot_rails
   font-awesome-rails
   haml-rails

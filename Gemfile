@@ -11,8 +11,9 @@ gem 'turbolinks', '~> 5'
 gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'sass-rails'
-gem 'jquery-rails'
 gem 'uglifier'
+gem 'jquery-rails'
+gem 'es6-promise-rails'
 
 gem 'active_record_enumerated_type'
 

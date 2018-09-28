@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require promise
 //= require activestorage
 //= require turbolinks
 //= require pouchdb-7.0.0.min.js
