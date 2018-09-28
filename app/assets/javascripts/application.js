@@ -20,6 +20,7 @@
 //= require herois-start
 //= require herois-new-beachclean
 //= require herois-show-beachclean
+//= require herois-submit-beachclean
 //= require herois-thanks
 //= require herois
 

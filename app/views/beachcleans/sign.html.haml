@@ -1,14 +1,10 @@
-%p
-  We received your data!
-
-  %ul
-    %li Date: #{pretty_print_date @beachclean.date}
-    %li Place: #{pretty_print_place @beachclean.place}
-    %li Estimated weight: #{@estimated_weight.round(2)} kg
+%h3 Thanks for helping to keep our beaches clean! :-)
 
 %p
-  If you want to enable us to use your data in our research,
-  we'd appreciate if you signed it.
+  We'd love to use your data in our research.
+  In order to do so, we'd appreciate if you signed it.
+
+%h3 Signature
 
 = form_tag('/beachcleans/' + @beachclean.uuid + '/sign', method: 'POST') do
   I am a
@@ -28,5 +24,7 @@
 
   = label_tag :email, 'Email'
   = email_field_tag :email
+
+  %span.footprint We will not give your email to anyone else.
 
   = submit_tag 'Sign beach clean'

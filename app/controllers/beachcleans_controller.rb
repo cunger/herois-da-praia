@@ -21,9 +21,7 @@ class BeachcleansController < ApplicationController
 
   def submit
     @user = find_user(user_uuid) || new_user(user_uuid)
-    p @user
     @beachclean = find_beachclean || new_beachclean(@user.id)
-    p @beachclean
     @beachclean.update beachclean_params.merge({ user_id: @user.id })
 
     params['items'].each_pair do |_, item|
@@ -34,21 +32,26 @@ class BeachcleansController < ApplicationController
       item.update(quantity: quantity)
     end
 
-    redirect_to beachclean_sign_path(uuid)
+    redirect_to beachclean_summary_path(@beachclean.uuid)
   end
 
-  def new_signature
+  def summary
     @beachclean = find_beachclean
+    @items = all_items
+  end
+
+  def sign
+    @beachclean = find_beachclean || new_beachclean
     @estimated_weight = @beachclean.estimated_weight
   end
 
   def create_signature
     @beachclean = find_beachclean
+    @beachclean.update({ :signed => true })
     @user = User.find(@beachclean.user_id)
+    @user.update params.permit(:group, :name, :email)
 
-    # TODO update user info
-    # TODO  mark the beach clean as verified
-    # Parameters: {"utf8"=>"✓", "authenticity_token"=>"gLo5bpuAQ0iS0pkArpJyNsxQvMfVhkizzs4fEYlslXL5ZObvUQw0ELrYZNEeENhSWBRZnu3pMZg0xtfDFAxT8Q==", "group"=>"visitor", "name"=>"Christina", "email"=>"", "commit"=>"Sign beach clean", "beachclean_uuid"=>"81e81d9d-716c-8cce-40e6-bf3c64da4efe"}
+    redirect_to beachclean_thanks_path
   end
 
   def thanks

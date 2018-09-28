@@ -1,6 +1,5 @@
-
-var allUpdatesAreSaved = true;
 var counter = {};
+var allUpdatesAreSaved = true;
 
 /**
  * Saving item counts stored in `counter` to the database.
@@ -109,7 +108,7 @@ function saveButton() {
 /**
  * Function for submitting beachclean data to the server.
  * Sends the locally stored beachclean and its corresponding items
- * as an Ajax request, and then redirects to the corresponding './submit' page.
+ * to the server (as an Ajax request).
  */
 function submit(beachclean, items) {
   $.ajax(window.location.pathname + '/submit', {
@@ -119,19 +118,20 @@ function submit(beachclean, items) {
       'items': items
     },
     success: function (response) {
-      console.log(response);
       // document.location.href = window.location.pathname + '/submit';
+      // (Taken care of by turbolinks.)
     },
     error: function (response) {
       console.log(response);
       // TODO Probably you're offline? Try again when online.
+      // (And stay on beachclean page.)
     }
   });
 }
 
 /**
- * Attach a handler to the "Submit" button that sends the item counts
- * stored in `counter` to the server
+ * Attach a handler to the "Submit" button that sends the user
+ * to the /submit page.
  */
 function submitButton() {
   $('#js-submit-beachclean').on('click', function (event) {
@@ -140,18 +140,18 @@ function submitButton() {
     var uuid = window.location.pathname.split('/')[2];
 
     promiseToSaveItems(uuid)
-    .then(function () {
+    .then(function (result) {
       return database.get(uuid);
     })
     .then(function (beachclean) {
-      database.find({
+      return database.find({
         selector: {
           model: 'item',
           beachclean_uuid: uuid
         }
       })
-      .then(function (items) {
-        submit(beachclean, items.docs);
+      .then(function (result) {
+        return submit(beachclean, result.docs);
       })
       .catch(console.log);
     })

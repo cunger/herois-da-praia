@@ -26,6 +26,13 @@ $(document).on('turbolinks:load', function (event) {
     return;
   }
 
+  if (isViewFor('beachcleans', 'summary')) {
+    initCounts();
+    backButton();
+    sendButton();
+    return;
+  }
+
   if (isViewFor('beachcleans', 'thanks')) {
     markBeachcleanAsSubmitted();
     return;

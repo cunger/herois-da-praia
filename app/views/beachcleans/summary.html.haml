@@ -1,0 +1,23 @@
+%ul
+  %li
+  %strong Date:
+  #{pretty_print_date @beachclean.date}
+
+  %li
+  %strong Place:
+  #{pretty_print_place @beachclean.place}
+
+%p
+  %ul
+  - @items.each do |item|
+    - next if item.quantity == 0
+    %li
+    #{item.quantity} #{ItemCategory.full_name(item.category)}
+
+%ul
+  %li
+  %strong Estimated weight:
+  #{@beachclean.estimated_weight.round(2)} kg
+
+%button.submit-log{ id: 'js-show-beachclean' } Back
+%button.submit-log{ id: 'js-send-beachclean' } Send data

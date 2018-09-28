@@ -24,9 +24,9 @@ class ItemCategory
           :weight => 0.02
 
   declare :rope,
-	  :code => 'rope',
-	  :full_name => 'Rope',
-	  :weight => 0.05
+      	  :code => 'rope',
+      	  :full_name => 'Rope',
+      	  :weight => 0.05
 
   declare :cigarette_butt,
           :code => 'cigarette_butt',
