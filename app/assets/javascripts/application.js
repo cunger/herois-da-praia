@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require promise
-//= require activestorage
 //= require turbolinks
+//= require promise
 //= require pouchdb-7.0.0.min.js
 //= require pouchdb.find.min.js
 //= require herois-shared
@@ -23,7 +22,7 @@
 //= require herois-show-beachclean
 //= require herois-submit-beachclean
 //= require herois-thanks
-//= require herois
+//= require herois-dispatcher
 
 // use sw-toolbox.js (add to assets/javascripts)
 

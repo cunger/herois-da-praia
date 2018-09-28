@@ -16,7 +16,9 @@ function randomId() {
  * Local, client-side database for storing all logged data
  * until it is submitted to the server.
  */
+console.log('Firing up local database...');
 var database = new PouchDB('herois-da-praia');
+console.log('Done.');
 
 /**
  * Get the current user id from the database. If this is the first encounter,
