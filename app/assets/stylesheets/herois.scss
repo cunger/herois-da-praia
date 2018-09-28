@@ -143,6 +143,12 @@ input {
   display: block;
 }
 
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 90%
+}
+
 input[type='radio'] {
   display: inline-block;
 }

@@ -1,10 +1,11 @@
-%h3 Thanks for helping to keep our beaches clean! :-)
+%h3 You're a hero :-)
 
 %p
-  We'd love to use your data in our research.
-  In order to do so, we'd appreciate if you signed it.
+  Thanks for keeping our beaches clean!
 
-%h3 Signature
+%p
+  We'd also love to use your data in our research.
+  If you agree, we'd appreciate you signing it.
 
 = form_tag('/beachcleans/' + @beachclean.uuid + '/sign', method: 'POST') do
   I am a
@@ -25,6 +26,6 @@
   = label_tag :email, 'Email'
   = email_field_tag :email
 
-  %span.footprint We will not give your email to anyone else.
+  %span.footprint We will not share your email with anyone else.
 
   = submit_tag 'Sign beach clean'

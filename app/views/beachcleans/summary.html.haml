@@ -12,7 +12,7 @@
   - @items.each do |item|
     - next if item.quantity == 0
     %li
-    #{item.quantity} #{ItemCategory.full_name(item.category)}
+    = pluralize(item.quantity, ItemCategory.full_name(item.category))
 
 %ul
   %li
