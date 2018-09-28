@@ -173,6 +173,9 @@ function deleteButton() {
     .then(function (beachclean) {
       return database.remove(beachclean);
     })
+    // .then(function (result) {
+    //   return database.compact();
+    // })
     .then(function () {
       document.location.href = '/';
     })

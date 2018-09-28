@@ -1,5 +1,6 @@
 {
   "name": "herois-da-praia",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {}
 }

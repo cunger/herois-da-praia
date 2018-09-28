@@ -12,7 +12,7 @@ gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'sass-rails'
 gem 'jquery-rails'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 gem 'active_record_enumerated_type'
 
