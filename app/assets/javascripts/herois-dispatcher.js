@@ -13,6 +13,7 @@ $(document).on('turbolinks:load', function (event) {
   }
 
   if (isViewFor('beachcleans', 'new')) {
+    handlerForPlaceOptions();
     startLoggingButton();
     return;
   }

@@ -10,4 +10,10 @@
   = form.label :place_id, 'Place'
   = form.select :place_id, Place.select_options, { include_blank: true, selected: nil }
 
+  %div.hidden{ id: 'other-place' }
+    = label_tag :place_name, 'Name or brief description'
+    = text_field_tag :place_name
+    = check_box :location, nil
+    Grab my current location
+
   = form.submit 'Start logging', { id: 'js-create-beachclean' }

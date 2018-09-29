@@ -149,7 +149,8 @@ input[type='password'] {
   width: 90%
 }
 
-input[type='radio'] {
+input[type='radio'],
+input[type='checkbox'] {
   display: inline-block;
 }
 
@@ -219,6 +220,10 @@ li.activity {
 }
 
 /* Span-level styling */
+
+.hidden {
+  display: none;
+}
 
 .footprint {
   font-size: 0.8em;
