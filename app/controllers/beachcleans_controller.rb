@@ -21,8 +21,9 @@ class BeachcleansController < ApplicationController
 
   def submit
     @user = find_user(user_uuid) || new_user(user_uuid)
+    @place = find_place || new_place
     @beachclean = find_beachclean || new_beachclean(@user.id)
-    @beachclean.update beachclean_params.merge({ user_id: @user.id })
+    @beachclean.update beachclean_params.merge({ user_id: @user.id, place_id: @place.id })
 
     params['items'].each_pair do |_, item|
       category = item['category']
@@ -71,6 +72,22 @@ class BeachcleansController < ApplicationController
     params[:beachclean][:user_uuid]
   end
 
+  def place_id
+    params[:beachclean][:place_id]
+  end
+
+  def place_name
+    params[:beachclean][:place_name]
+  end
+
+  def place_latitude
+    params[:beachclean][:place_latitude]
+  end
+
+  def place_longitude
+    params[:beachclean][:place_longitude]
+  end
+
   def beachclean_params
     params.fetch(:beachclean, {})
           .permit(:uuid, :date, :place_id, :user_id, :verified)
@@ -95,6 +112,14 @@ class BeachcleansController < ApplicationController
 
   def new_user(user_uuid)
     User.create({ uuid: user_uuid })
+  end
+
+  def find_place
+    Place.where(id: place_id).take
+  end
+
+  def new_place
+    Place.create({ name: place_name, latitude: place_latitude, longitude: place_longitude })
   end
 
   def find_item(category)
