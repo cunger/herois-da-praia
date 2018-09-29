@@ -12,13 +12,14 @@ gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'sass-rails'
 gem 'uglifier'
-
 gem 'jquery-rails'
-gem 'es6-promise-rails'
+
+# gem 'serviceworker-rails'
+
+# gem 'sprockets'
+# gem 'sprockets-es6'
 
 gem 'active_record_enumerated_type'
-
-gem 'serviceworker-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

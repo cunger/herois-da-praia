@@ -4,12 +4,8 @@ function startLoggingButton() {
   $('#js-create-beachclean').on('click', function (event) {
     event.preventDefault();
 
-    console.log(database);
-
     currentUser()
     .then(function (user) {
-      console.log(user);
-
       return {
         _id: randomId(),
         model: 'beachclean',
