@@ -22,7 +22,10 @@ function fillList() {
 
       var anchor = document.createElement('a');
       var text = document.createTextNode(prettyDate(log) + ' ' + prettyPlace(log));
-      $(anchor).append(iconImageNode(log.model));
+      var icon = document.createElement('img');
+      icon.src = 'images/' + model + '_icon.png';
+      $(icon).addClass('icon');
+      $(anchor).append(icon);
       $(anchor).append(text);
       $(anchor).addClass('item');
 

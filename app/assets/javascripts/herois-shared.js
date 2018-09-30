@@ -35,11 +35,3 @@ function currentUser() {
   })
   .catch(console.log);
 }
-
-function iconImageNode(model) {
-  var icon = document.createElement('img');
-  icon.src = 'images/' + model + '_icon.png';
-  $(icon).addClass('icon');
-
-  return icon;
-}
