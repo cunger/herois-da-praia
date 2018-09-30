@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#start'
 
-  # get 'about' => 'welcome#about'
-  # get 'help'  => 'welcome#help'
+  get 'info' => 'welcome#info'
 
   # Logging data
 
