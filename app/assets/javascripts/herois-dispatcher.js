@@ -6,9 +6,13 @@ function isViewFor(controller, action) {
 }
 
 $(document).on('turbolinks:load', function (event) {
-
   if (isViewFor('welcome', 'start')) {
     indicateUnsubmittedLogs();
+    return;
+  }
+
+  if (isViewFor('activities', 'index')) {
+    fillList();
     return;
   }
 

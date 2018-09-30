@@ -76,6 +76,13 @@ li {
   list-style-type: none;
 }
 
+img.icon {
+  width: 40px;
+  border: 0;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
 .intro {
   margin-top: 1em;
   margin-bottom: 2em;
@@ -85,8 +92,17 @@ li {
   color: #d8000c;
 }
 
-em {
-  font-style: italic;
+#unsubmitted-logs-count {
+  font-size: 0.8em;
+  padding: 2px 8px;
+  border-radius: 50%;
+  color: #fff;
+}
+.counter-zero {
+  background-color: #6ce014;
+}
+.counter-non-zero {
+  background-color: #f7252c;
 }
 
 /* Links and buttons */
@@ -97,8 +113,7 @@ a {
   font-size: 1.6em;
 }
 
-a.item,
-a.activity {
+a.item {
   font-size: 1.2em;
 }
 
@@ -176,12 +191,7 @@ ul {
 }
 
 li.activity {
-  border-bottom: 2px solid #6ec1e4;
-  color: #6f6f6f;
-}
-
-li.activity li {
-  margin: 10px 0;
+  margin: 2px 0;
 }
 
 li.item {
@@ -231,4 +241,8 @@ li.activity {
 
 strong {
   font-weight: bold;
+}
+
+em {
+  font-style: italic;
 }

@@ -1,12 +1,3 @@
-%ul
-- @activities.each do |activity|
-  %li.activity
-    = pretty_print_date(activity[:date])
-    = pretty_print_place(activity[:place])
-    %ul
-      - if activity[:beachclean]
-        %li
-          = link_to "Beach clean (#{activity[:items]} items)", items_path(activity[:log_id]), { class: 'activity' }
-      - if activity[:whalewatch]
-        %li
-          = link_to 'Observations', observations_path(activity[:log_id]), { class: 'activity' }
+%h3 Unsubmitted logs
+
+%ul{ id: 'unsubmitted-logs' }

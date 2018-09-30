@@ -1,3 +1,0 @@
-function indicateUnsubmittedLogs() {
-    // TODO
-}

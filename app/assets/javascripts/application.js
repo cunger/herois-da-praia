@@ -7,10 +7,10 @@
 //= require pouchdb-7.0.0.min.js
 //= require pouchdb.find.min.js
 //= require herois-shared
-//= require herois-start
 //= require herois-new-beachclean
 //= require herois-show-beachclean
 //= require herois-submit-beachclean
+//= require herois-unsubmitted-logs
 //= require herois-thanks
 //= require herois-dispatcher
 //= require_tree .

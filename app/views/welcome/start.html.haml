@@ -2,13 +2,22 @@
   Olá, beach hero!
 
 %p
-  = link_to 'New beach clean', new_beachclean_path
+  = link_to new_beachclean_path do
+    %img{ src: 'images/beachclean_icon.png', class: 'icon' }
+    New beach clean
 
 %p
-  = link_to 'New whale watch', new_whalewatch_path
+  = link_to new_whalewatch_path do
+    %img{ src: 'images/whalewatch_icon.png', class: 'icon' }
+    New whale watch
 
 %p
-  = link_to 'Unsubmitted logs', activities_path
+  = link_to activities_path do
+    %img{ src: 'images/unsubmitted_icon.png', class: 'icon' }
+    Unsubmitted logs
+    %span{ id: 'unsubmitted-logs-count' }
 
 %p
-  = link_to 'Analytics', analytics_path
+  = link_to analytics_path do
+    %img{ src: 'images/analytics_icon.png', class: 'icon' }
+    Analytics
