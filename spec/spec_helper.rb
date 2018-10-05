@@ -26,6 +26,8 @@ RSpec.configure do |config|
     # :transaction rolls back all changes made by the running scenario
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    # Add all seeds
+    Rails.application.load_seed
   end
 
   config.before(:each) do

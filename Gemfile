@@ -39,6 +39,7 @@ group :test do
   gem 'pry'
   gem 'factory_bot_rails', require: false
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
   gem 'capybara', '>= 2.15'
   gem 'capybara-webkit'
 end

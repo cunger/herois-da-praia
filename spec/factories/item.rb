@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
-    log_id   { FactoryBot.create(:log).id }
+    beachclean_id { FactoryBot.create(:beachclean).id }
     category { ItemCategory::TOOTHBRUSH }
-    quantity { 0 }
+    quantity { 1 }
   end
 end
