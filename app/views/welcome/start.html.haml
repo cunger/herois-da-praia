@@ -14,12 +14,16 @@
     Unsubmitted logs
     %span{ id: 'unsubmitted-logs-count' }
 
-%p
-  = link_to analytics_path do
-    %img{ src: '/images/analytics_icon.png', class: 'icon' }
-    Analytics
+-# TODO Only when logged in:
+-# %p
+-#   = link_to analytics_path do
+-#     %img{ src: '/images/analytics_icon.png', class: 'icon' }
+-#     Analytics
 
 %p
   = link_to info_path do
     %img{ src: '/images/info_icon.png', class: 'icon' }
     Info
+
+-# TODO
+-# small: Log in as LTO staff or volunteer

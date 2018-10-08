@@ -16,6 +16,13 @@ function fillList() {
     selector: { submitted: false }
   })
   .then(function (result) {
+    if (result.docs.length === 0) {
+      var p = document.createElement('p');
+      var p_text = document.createTextNode('You have no unsubmitted logs.');
+      $(p).append(p_text);
+      $(p).insertAfter(ul);
+    }
+
     result.docs.forEach(function (log) {
       var li = document.createElement('li');
       $(li).addClass('activity');

@@ -4,6 +4,7 @@
     %legend Time period
     = label_tag :startDate, 'From:'
     = date_field_tag :startDate, Time.now.strftime("%Y-%m-%d")
+    %br
     = label_tag :endDate, 'To:'
     = date_field_tag :endDate, Time.now.strftime("%Y-%m-%d")
 

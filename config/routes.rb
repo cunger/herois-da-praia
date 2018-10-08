@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   # Analytics
 
-  get  'analytics'       => 'analytics#start'
-  post 'analytics/query' => 'analytics#query'
+  # TODO
+  # get  'analytics'       => 'analytics#start'
+  # post 'analytics/query' => 'analytics#query'
 end
