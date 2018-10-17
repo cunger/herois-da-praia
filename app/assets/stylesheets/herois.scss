@@ -136,10 +136,15 @@ input[type='submit'] {
   cursor: pointer;
 }
 
+.save-log,
 .submit-log,
 .delete-log {
   display: inline-block;
   margin: 40px 8px;
+}
+
+.delete-log {
+  background-color: #b51015;
 }
 
 /* Forms */
@@ -201,6 +206,7 @@ li.item {
   margin: 8px 0;
   padding: 10px;
   border-radius: 5px;
+  // box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .item-component {
@@ -214,7 +220,7 @@ li.item {
 .plus,
 .minus,
 .count {
-  width: 40px;
+  padding: 0 6px;
   text-align: center;
 }
 

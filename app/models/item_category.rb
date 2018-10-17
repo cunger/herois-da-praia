@@ -3,20 +3,30 @@ require 'enumerated_type'
 class ItemCategory
   include EnumeratedType
 
-  declare :plastic_fragment_s,
-          :code => 'plastic_fragment_s',
-          :full_name => 'Plastic fragment S', # (< 1cm)
-          :weight_in_gram => 0.11
+  # declare :plastic_fragment_s,
+  #         :code => 'plastic_fragment_s',
+  #         :full_name => 'Plastic fragment S', # (< 1cm)
+  #         :weight_in_gram => 0.11
+  #
+  # declare :plastic_fragment_m,
+  #         :code => 'plastic_fragment_m',
+  #         :full_name => 'Plastic fragment M', # (1-2.5cm)
+  #         :weight_in_gram => 0.45
+  #
+  # declare :plastic_fragment_l,
+  #         :code => 'plastic_fragment_l',
+  #         :full_name => 'Plastic fragment L', # (> 2.5cm)
+  #         :weight_in_gram => 4.5
 
-  declare :plastic_fragment_m,
-          :code => 'plastic_fragment_m',
-          :full_name => 'Plastic fragment M', # (1-2.5cm)
-          :weight_in_gram => 0.45
-
-  declare :plastic_fragment_l,
-          :code => 'plastic_fragment_l',
-          :full_name => 'Plastic fragment L', # (> 2.5cm)
+  declare :plastic_fragment,
+          :code => 'plastic_fragment',
+          :full_name => 'Plastic fragment',
           :weight_in_gram => 4.5
+
+  declare :bottle_cap,
+          :code => 'bottle_cap',
+          :full_name => 'Bottle cap/lid',
+          :weight_in_gram => 2.8
 
   declare :plastic_bottle,
           :code => 'plastic_bottle',
@@ -27,11 +37,6 @@ class ItemCategory
           :code => 'glas_bottle',
           :full_name => 'Glas bottle',
           :weight_in_gram => 465.0
-
-  declare :bottle_cap,
-          :code => 'bottle_cap',
-          :full_name => 'Bottle cap/lid',
-          :weight_in_gram => 2.8
 
   declare :aluminum_can,
           :code => 'aluminum_can',

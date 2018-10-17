@@ -39,6 +39,7 @@ class BeachcleansController < ApplicationController
   def summary
     @beachclean = find_beachclean
     @items = all_items
+    @weight_in_kg = @beachclean.weight_in_gram / 1000
   end
 
   def sign
