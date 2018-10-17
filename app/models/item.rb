@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   restrict_type_of :category, to: ItemCategory
 
-  def weight
-    category.weight
+  def weight_in_gram
+    category.weight_in_gram
   end
 end

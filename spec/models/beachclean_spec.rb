@@ -24,5 +24,14 @@ RSpec.describe Beachclean, type: :model do
   end
 
   it 'can estimate the total weight of all items belonging to it' do
+    beachclean = FactoryBot.create(:beachclean)
+    items = [
+      FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory::TOOTHBRUSH , quantity: 1),
+      FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory::PLASTIC_BOTTLE , quantity: 2),
+      FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory::FISHING_GEAR , quantity: 10),
+      FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory::SHOE , quantity: 1)
+    ]
+
+    expect(beachclean.estimated_weight_in_gram).to eq(170.45)
   end
 end

@@ -7,8 +7,8 @@ describe BeachcleansController do
     it 'hands all items belonging to that beachclean to the view, '\
        'together with items with quantity 0 for all remaining categories' do
 
-      toothbrushes = FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory::TOOTHBRUSH, quantity: 10)
-      lighters = FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory::LIGHTER, quantity: 6)
+      toothbrushes = FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory[:toothbrush], quantity: 10)
+      fishing_gear = FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory[:fishing_gear], quantity: 6)
 
       get :show, params: { uuid: beachclean.uuid }
       items = assigns(:items)
@@ -16,10 +16,11 @@ describe BeachcleansController do
       expect(items).not_to be_empty
       # @items includes the items belonging to the beachclean
       expect(items).to include(toothbrushes)
-      expect(items).to include(lighters)
+      expect(items).to include(fishing_gear)
       # @items contains an item for each remaining category, with quantity 0
       ItemCategory.each do |category|
-        next if category == ItemCategory::TOOTHBRUSH || category == ItemCategory::LIGHTER
+        next if category == ItemCategory[:toothbrush] ||
+                category == ItemCategory[:fishing_gear]
         new_item = items.select { |item| item.category == category }
         expect(new_item.length).to be(1)
         expect(new_item.first.quantity).to be(0)

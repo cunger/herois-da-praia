@@ -10,8 +10,8 @@ class Beachclean < ApplicationRecord
     Place.find(place_id)
   end
 
-  def estimated_weight
+  def weight_in_gram
     Item.where(beachclean_id: id)
-        .reduce(0) { |sum, item| sum + item.weight }
+        .reduce(0) { |sum, item| sum + item.quantity * item.weight_in_gram }
   end
 end

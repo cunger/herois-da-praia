@@ -43,7 +43,7 @@ class BeachcleansController < ApplicationController
 
   def sign
     @beachclean = find_beachclean || new_beachclean
-    @estimated_weight = @beachclean.estimated_weight
+    @weight_in_kg = @beachclean.weight_in_gram / 1000
   end
 
   def create_signature
