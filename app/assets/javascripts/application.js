@@ -13,12 +13,14 @@
 //= require herois-unsubmitted-logs
 //= require herois-thanks
 //= require herois-dispatcher
-//= require_tree .
+//= require app_assets
 
-// use sw-toolbox.js (add to assets/javascripts)
+// TODO maybe use sw-toolbox.js (add to assets/javascripts)
 
-// if (navigator.serviceWorker) {
-//   navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
-//     .then(function (result) { console.log('Service worker registered.'); })
-//     .catch(console.error);
-// }
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
+    .then(function (result) {
+      console.log('Service worker registered.');
+    })
+    .catch(console.error);
+}

@@ -25,7 +25,7 @@ class BeachcleansController < ApplicationController
     @beachclean = find_beachclean || new_beachclean(@user.id)
     @beachclean.update beachclean_params.merge({ user_id: @user.id, place_id: @place.id })
 
-    params['items'].each_pair do |_, item|
+    (params['items'] || {}).each_pair do |_, item|
       category = item['category']
       quantity = item['quantity'].to_i
 

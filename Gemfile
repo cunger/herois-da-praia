@@ -14,10 +14,12 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 
-# gem 'serviceworker-rails'
+gem 'serviceworker-rails'
 
-# gem 'sprockets'
-# gem 'sprockets-es6'
+# Add asset_path method to global scope in JS.
+# After update of assets, empty tmp/cache.
+# (cf. https://github.com/izaurio/js_assets)
+gem 'js_assets'
 
 gem 'active_record_enumerated_type'
 
