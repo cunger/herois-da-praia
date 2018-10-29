@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Heróis da praia</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="XwbQCtNu2NTqMKt1pzNEZFJWruN2da4Srb49sfQtlpUqIQChKNk0NCXmsO+sAdn+5AniPWwXjETmeWYslhc1Kw==" />
+
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<link rel="stylesheet" media="all" href="/assets/font-awesome.self-2a86d2017f4b74f22943750b3b50b9cb753581bab96cbdaaf2df53f4c04c995b.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/herois.self-59bfb44a19d6a9fbc8af7931e01261442792a2161978b0c857f0a361afc2c07f.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-3087a46c590170eea40a20d0e59862b42a553974e7985ae50e05e7503252fe14.css?body=1" data-turbolinks-track="reload" />
+<script src="/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1"></script>
+<script src="/assets/rails-ujs.self-3b600681e552d8090230990c0a2e8537aff48159bea540d275a620d272ba33a0.js?body=1"></script>
+<script src="/assets/turbolinks.self-2db6ec539b9190f75e1d477b305df53d12904d5cafdd47c7ffd91ba25cbec128.js?body=1"></script>
+<script src="/assets/pouchdb-7.0.0.min.self-07ccc91c683a44c84d031c98092da3b145d8418cb1629317d2b85d3537d5ae9e.js?body=1"></script>
+<script src="/assets/pouchdb.find.min.self-69e41b67d8ebdca27f0bb99eea0e013d6e9464f551e4b0f22569a4791569c9b1.js?body=1"></script>
+<script src="/assets/herois-shared.self-2810781d795e493b3ddf9efc3504c2f671160083545ca973239c3d647ef7b59c.js?body=1"></script>
+<script src="/assets/herois-new-beachclean.self-a059ef7002a649b74684d3fb36940bbec2785e810840e4bd52d1af5c2095caa4.js?body=1"></script>
+<script src="/assets/herois-show-beachclean.self-055204bbf7bf5cd2336c7ecd3bd1a5be649ffb80afbd8088b1bf17a8e446670d.js?body=1"></script>
+<script src="/assets/herois-submit-beachclean.self-c0196414807708e5b4fcec969d6bdb63de106791c3e70c7202563d6d8d0a2a0f.js?body=1"></script>
+<script src="/assets/herois-unsubmitted-logs.self-44b1f77d877a8bb32a5a547994e08acfe3010a95eec7ee4ade225eea99976471.js?body=1"></script>
+<script src="/assets/herois-thanks.self-1d23c619effcf089e5a69bcff4c9ff78243319e5f274ac1b973cac1b55c8d1bc.js?body=1"></script>
+<script src="/assets/herois-dispatcher.self-ea946030af7134c62e08e5300d47af749c16e745420689ddf9ebd6ad625e6a9f.js?body=1"></script>
+<script src="/assets/app_assets.self-031bb7812cac241cd1c68bfe7db3bc18d99c685c3685ed6de333c0307302c2da.js?body=1"></script>
+<script src="/assets/application.self-e516823bc9f23241d43f21f741cf922729236aba34674937c76cfcc0fac5ae92.js?body=1"></script>
+<link href='/manifest.json' rel='manifest'>
+</head>
+<body data-action='' data-controller='application'>
+<header>
+<a href="/"><img alt="LTO" src="/images/lto_logo.png" width="60" height="60" /></a>
+</header>
+<main>
+<div id='content'>
+<ul>
+<a class='item' data-item-category='plastic_fragment' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Plastic fragment
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='plastic_fragment'>
++
+</span>
+<span class='item-component count' data-item-category='plastic_fragment'>
+0
+</span>
+<span class='item-component minus' data-item-category='plastic_fragment'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='bottle_cap' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Bottle cap/lid
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='bottle_cap'>
++
+</span>
+<span class='item-component count' data-item-category='bottle_cap'>
+0
+</span>
+<span class='item-component minus' data-item-category='bottle_cap'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='plastic_bottle' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Plastic bottle
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='plastic_bottle'>
++
+</span>
+<span class='item-component count' data-item-category='plastic_bottle'>
+0
+</span>
+<span class='item-component minus' data-item-category='plastic_bottle'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='glas_bottle' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Glas bottle
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='glas_bottle'>
++
+</span>
+<span class='item-component count' data-item-category='glas_bottle'>
+0
+</span>
+<span class='item-component minus' data-item-category='glas_bottle'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='aluminum_can' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Aluminum can
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='aluminum_can'>
++
+</span>
+<span class='item-component count' data-item-category='aluminum_can'>
+0
+</span>
+<span class='item-component minus' data-item-category='aluminum_can'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='fishing_gear' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Fishing gear
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='fishing_gear'>
++
+</span>
+<span class='item-component count' data-item-category='fishing_gear'>
+0
+</span>
+<span class='item-component minus' data-item-category='fishing_gear'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='food_wrapper' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Food wrapper
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='food_wrapper'>
++
+</span>
+<span class='item-component count' data-item-category='food_wrapper'>
+0
+</span>
+<span class='item-component minus' data-item-category='food_wrapper'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='straw' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Straw
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='straw'>
++
+</span>
+<span class='item-component count' data-item-category='straw'>
+0
+</span>
+<span class='item-component minus' data-item-category='straw'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='plastic_bag' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Plastic bag
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='plastic_bag'>
++
+</span>
+<span class='item-component count' data-item-category='plastic_bag'>
+0
+</span>
+<span class='item-component minus' data-item-category='plastic_bag'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='foam' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Foam
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='foam'>
++
+</span>
+<span class='item-component count' data-item-category='foam'>
+0
+</span>
+<span class='item-component minus' data-item-category='foam'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='fabric' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Fabric
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='fabric'>
++
+</span>
+<span class='item-component count' data-item-category='fabric'>
+0
+</span>
+<span class='item-component minus' data-item-category='fabric'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='rope' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Rope
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='rope'>
++
+</span>
+<span class='item-component count' data-item-category='rope'>
+0
+</span>
+<span class='item-component minus' data-item-category='rope'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='toothbrush' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Toothbrush
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='toothbrush'>
++
+</span>
+<span class='item-component count' data-item-category='toothbrush'>
+0
+</span>
+<span class='item-component minus' data-item-category='toothbrush'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='cigarette_butt' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Cigarette butt
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='cigarette_butt'>
++
+</span>
+<span class='item-component count' data-item-category='cigarette_butt'>
+0
+</span>
+<span class='item-component minus' data-item-category='cigarette_butt'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='shoe' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Shoe
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='shoe'>
++
+</span>
+<span class='item-component count' data-item-category='shoe'>
+0
+</span>
+<span class='item-component minus' data-item-category='shoe'>
+-
+</span>
+</span>
+</li>
+</a>
+<a class='item' data-item-category='other' href='#'>
+<li class='item'>
+<span class='item-component name'>
+Other
+</span>
+<span class='item-component'>
+<span class='item-component plus' data-item-category='other'>
++
+</span>
+<span class='item-component count' data-item-category='other'>
+0
+</span>
+<span class='item-component minus' data-item-category='other'>
+-
+</span>
+</span>
+</li>
+</a>
+</ul>
+<div class='buttons'>
+<button class='save-log' id='js-save-beachclean'>Save</button>
+<button class='submit-log' id='js-submit-beachclean'>Submit</button>
+<button class='delete-log' id='js-delete-beachclean'>Delete</button>
+</div>
+
+</div>
+</main>
+<footer>
+<a target="_blank" href="https://www.lovetheoceans.org"><i class="fa fa-globe"></i></a>
+<a target="_blank" href="https://www.facebook.com/lovetheoceansorganisation/"><i class="fa fa-facebook"></i></a>
+<a target="_blank" href="https://www.instagram.com/lovetheoceans/"><i class="fa fa-instagram"></i></a>
+</footer>
+</body>
+</html>

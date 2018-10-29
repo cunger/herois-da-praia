@@ -1,5 +1,5 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
+// This is a manifest file that'll be compiled into application.js,
+// which will include all the files listed below.
 //
 //= require jquery
 //= require rails-ujs
@@ -13,9 +13,6 @@
 //= require herois-unsubmitted-logs
 //= require herois-thanks
 //= require herois-dispatcher
-//= require app_assets
-
-// TODO maybe use sw-toolbox.js (add to assets/javascripts)
 
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register('/serviceworker.js', { scope: './' })

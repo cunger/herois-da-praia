@@ -8,23 +8,23 @@ const offlineResources = [
   '/beachcleans/new',
   '/activities',
   // Pages
-  // TODO beachcleans/:uuid/ page
+  '/beachclean_show.html',
   '/offline.html',
-  // CSS + JS
-  asset_path('application.css'),
-  asset_path('application.js'),
-  asset_path('serviceworker.js'),
   // Fonts
-  asset_path('Montserrat-Regular.otf'),
-  asset_path('Montserrat-Italic.otf'),
-  asset_path('Montserrat-Bold.otf'),
+  '/fonts/Montserrat-Regular.otf',
+  '/fonts/Montserrat-Italic.otf',
+  '/fonts/Montserrat-Bold.otf',
   // Images
-  asset_path('lto_logo.png'),
-  asset_path('analytics_icon.png'),
-  asset_path('beachclean_icon.png'),
-  asset_path('info_icon.png'),
-  asset_path('unsubmitted_icon.png'),
-  asset_path('whalewatch_icon.png')
+  '/images/lto_logo.png',
+  '/images/analytics_icon.png',
+  '/images/beachclean_icon.png',
+  '/images/info_icon.png',
+  '/images/unsubmitted_icon.png',
+  '/images/whalewatch_icon.png'
+  // CSS + JS are fetched anyway when sending a request to '/'.
+  // 'application.css',
+  // 'application.js',
+  // 'serviceworker.js',
 ];
 
 // Installation
@@ -40,7 +40,7 @@ function cacheOfflineResources() {
     .open(CACHE_NAME)
     .then((cache) => cache.addAll(offlineResources))
     .then(() => log('Finished caching offline resources.'))
-    .error(console.log);
+    .catch(console.log);
 }
 
 // Activation
@@ -49,7 +49,7 @@ self.addEventListener('activate', function (event) {
   log('Activating...');
 
   event.waitUntil(removeOldCaches());
-}
+});
 
 function removeOldCaches() {
   return caches
@@ -60,41 +60,42 @@ function removeOldCaches() {
             .map((key) => caches.delete(key))
       )
       .then(() => log('Removed old caches.'))
-      .error(console.log);
+      .catch(console.log);
     });
 }
 
 // Fetch
 
 self.addEventListener('fetch', function (event) {
+  console.log(event.request);
+  console.log(event.request.url);
   // TODO check for /beachcleans/:uuid request,
   //      and respond with cached web page if there is no network
 
-  event.respondWith(cacheOrNetworkOrOffline());
-}
+  event.respondWith(cacheOrNetworkOrOffline(event.request));
+});
 
 // 1. Check cache. Since not all requests are cached, this will fail for
 //    requests that do require a network (e.g. for submitting a log).
 // 2. Check network.
 // 3. If there is no network connection, show offline fallback that asks
 //    the user to try again when online.
-function cacheOrNetworkOrOffline() {
+
+function cacheOrNetworkOrOffline(request) {
   return caches
     .match(request)
     .then((response) => {
       log(`${request.method} ${request.url} ${response ? '(cached)' : '(not cached)'}`);
-      return response ||
-        tryNetwork(request)
-          .catch(() => { return offlineResponse(request) });
+      return response || fetch(request).then((response) => { return response; })
+                                       .catch(() => { return offlineResponse() });
     });
 }
 
-function tryNetwork(request) {
-  // TODO
-}
-
-function offlineResponse(request) {
-  // TODO
+function offlineResponse() {
+  return cache
+    .match('/offline.html')
+    .then((response) => { return response; })
+    .catch(console.log);
 }
 
 // Utils

@@ -16,11 +16,6 @@ gem 'jquery-rails'
 
 gem 'serviceworker-rails'
 
-# Add asset_path method to global scope in JS.
-# After update of assets, empty tmp/cache.
-# (cf. https://github.com/izaurio/js_assets)
-gem 'js_assets'
-
 gem 'active_record_enumerated_type'
 
 # Reduces boot times through caching; required in config/boot.rb
