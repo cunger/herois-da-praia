@@ -69,7 +69,7 @@ self.addEventListener('fetch', function (event) {
   // If the request is a CSS or JS file that was not yet cached,
   // cache the response before returning it.
   if (event.request.url.endsWith('.js') || event.request.url.endsWith('.css')) {
-    return cache
+    return caches
       .match(request)
       .then((response) => { return response; })
       .catch(() => {
@@ -85,7 +85,7 @@ self.addEventListener('fetch', function (event) {
   // If the request is to show a beachclean, return cached HTML.
   var showBeachcleanPattern = /.*\/beachcleans\/[\w\-]+\/?$/;
   if (event.request.url.match(showBeachcleanPattern)) {
-    return cache
+    return caches
       .match('/beachclean_show.html')
       .then((response) => response.text())
       .then((text) => event.respondWith(
