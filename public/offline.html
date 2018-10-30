@@ -1,66 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>You are not connected to the Internet</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+<title>Heróis da praia</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="gM74dTOjxXjS1yIftrEjZSReAMOgtfO9VbkYTX+gKMYSbnRpPIB34qzDI0ESMtK3pSHVCOhET/ftKwyqxlFlnQ==" />
 
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<link rel="stylesheet" media="all" href="/assets/font-awesome.self-2a86d2017f4b74f22943750b3b50b9cb753581bab96cbdaaf2df53f4c04c995b.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/herois.self-4e576693f70d292c86ba742e425f82675c0975a06e1ec225a11e9d88b2df1a60.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-3087a46c590170eea40a20d0e59862b42a553974e7985ae50e05e7503252fe14.css?body=1" data-turbolinks-track="reload" />
+<script src="/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1"></script>
+<script src="/assets/rails-ujs.self-3b600681e552d8090230990c0a2e8537aff48159bea540d275a620d272ba33a0.js?body=1"></script>
+<script src="/assets/turbolinks.self-2db6ec539b9190f75e1d477b305df53d12904d5cafdd47c7ffd91ba25cbec128.js?body=1"></script>
+<script src="/assets/pouchdb-7.0.0.min.self-07ccc91c683a44c84d031c98092da3b145d8418cb1629317d2b85d3537d5ae9e.js?body=1"></script>
+<script src="/assets/pouchdb.find.min.self-69e41b67d8ebdca27f0bb99eea0e013d6e9464f551e4b0f22569a4791569c9b1.js?body=1"></script>
+<script src="/assets/herois-shared.self-2810781d795e493b3ddf9efc3504c2f671160083545ca973239c3d647ef7b59c.js?body=1"></script>
+<script src="/assets/herois-new-beachclean.self-a059ef7002a649b74684d3fb36940bbec2785e810840e4bd52d1af5c2095caa4.js?body=1"></script>
+<script src="/assets/herois-show-beachclean.self-055204bbf7bf5cd2336c7ecd3bd1a5be649ffb80afbd8088b1bf17a8e446670d.js?body=1"></script>
+<script src="/assets/herois-submit-beachclean.self-c0196414807708e5b4fcec969d6bdb63de106791c3e70c7202563d6d8d0a2a0f.js?body=1"></script>
+<script src="/assets/herois-unsubmitted-logs.self-44b1f77d877a8bb32a5a547994e08acfe3010a95eec7ee4ade225eea99976471.js?body=1"></script>
+<script src="/assets/herois-thanks.self-1d23c619effcf089e5a69bcff4c9ff78243319e5f274ac1b973cac1b55c8d1bc.js?body=1"></script>
+<script src="/assets/herois-dispatcher.self-ea946030af7134c62e08e5300d47af749c16e745420689ddf9ebd6ad625e6a9f.js?body=1"></script>
+<script src="/assets/application.self-e3a2b8e39d6503c80453408924c0ace4f4f1967497c378aa0dd2cfa1377642b6.js?body=1"></script>
+<link href='/manifest.json' rel='manifest'>
 </head>
+<body data-action='' data-controller='application'>
+<header>
+<a href="/"><img alt="LTO" src="/images/lto_logo.png" width="60" height="60" /></a>
+</header>
+<main>
+<div id='content'>
+%h3 Lost internet connection
 
-<body>
-  <!-- This file lives in public/offline.html -->
-  <div class="dialog">
-    <div>
-      <h1>It looks like you've lost your Internet connection</h1>
-      <p>You may need to reconnect to Wi-Fi.</p>
-    </div>
-  </div>
+</div>
+</main>
+<footer>
+<a target="_blank" href="https://www.lovetheoceans.org"><i class="fa fa-globe"></i></a>
+<a target="_blank" href="https://www.facebook.com/lovetheoceansorganisation/"><i class="fa fa-facebook"></i></a>
+<a target="_blank" href="https://www.instagram.com/lovetheoceans/"><i class="fa fa-instagram"></i></a>
+</footer>
 </body>
 </html>

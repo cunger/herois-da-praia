@@ -21,10 +21,7 @@ const offlineResources = [
   '/images/info_icon.png',
   '/images/unsubmitted_icon.png',
   '/images/whalewatch_icon.png'
-  // CSS + JS are fetched anyway when sending a request to '/'.
-  // 'application.css',
-  // 'application.js',
-  // 'serviceworker.js',
+  // CSS + JS: see Fetch below
 ];
 
 // Installation
@@ -68,9 +65,36 @@ function removeOldCaches() {
 
 self.addEventListener('fetch', function (event) {
   console.log(event.request);
-  console.log(event.request.url);
-  // TODO check for /beachcleans/:uuid request,
-  //      and respond with cached web page if there is no network
+
+  // If the request is a CSS or JS file that was not yet cached,
+  // cache the response before returning it.
+  if (event.request.url.endsWith('.js') || event.request.url.endsWith('.css')) {
+    return cache
+      .match(request)
+      .then((response) => { return response; })
+      .catch(() => {
+        fetch(request)
+        .then((response) => {
+          cache.put(request, response);
+          return response;
+        })
+        .catch(console.log);
+      });
+  }
+
+  // If the request is to show a beachclean, return cached HTML.
+  var showBeachcleanPattern = /.*\/beachcleans\/[\w\-]+\/?$/;
+  if (event.request.url.match(showBeachcleanPattern)) {
+    return cache
+      .match('/beachclean_show.html')
+      .then((response) => response.text())
+      .then((text) => event.respondWith(
+        new Response(text, {
+          headers: {'Content-Type': 'text/html'}
+        })
+      ))
+      .catch(console.log);
+  }
 
   event.respondWith(cacheOrNetworkOrOffline(event.request));
 });
