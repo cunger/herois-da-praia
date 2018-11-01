@@ -1,9 +1,9 @@
 /**
- * Attach a handler to the "Send data" button that sends the item counts
- * stored in `counter` to the server.
+ * Attach a handler to the "Finish" button that marks the beachclean as
+ * submitted in the local database and redirects to /sign.
  */
-function sendButton() {
-  $('#js-send-beachclean').on('click', function (event) {
+function finishButton() {
+  $('#js-finish-beachclean').on('click', function (event) {
     event.preventDefault();
 
     var uuid = window.location.pathname.split('/')[2];

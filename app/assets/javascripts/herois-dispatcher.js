@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function (event) {
   if (isViewFor('beachcleans', 'summary')) {
     initCounts();
     backButton();
-    sendButton();
+    finishButton();
     return;
   }
 

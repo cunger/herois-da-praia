@@ -64,8 +64,6 @@ function removeOldCaches() {
 // Fetch
 
 self.addEventListener('fetch', function (event) {
-  console.log(event.request);
-
   // If the request is a CSS or JS file that was not yet cached,
   // cache the response before returning it.
   if (event.request.url.endsWith('.js') || event.request.url.endsWith('.css')) {

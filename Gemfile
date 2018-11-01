@@ -13,7 +13,6 @@ gem 'font-awesome-rails'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
-
 gem 'serviceworker-rails'
 
 gem 'active_record_enumerated_type'

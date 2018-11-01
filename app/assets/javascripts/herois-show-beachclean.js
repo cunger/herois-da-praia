@@ -108,7 +108,7 @@ function saveButton() {
 /**
  * Function for submitting beachclean data to the server.
  * Sends the locally stored beachclean and its corresponding items
- * to the server (as an Ajax request).
+ * to the server.
  */
 function submit(beachclean, items) {
   $.ajax(window.location.pathname + '/submit', {
@@ -118,20 +118,18 @@ function submit(beachclean, items) {
       'items': items
     },
     success: function (response) {
-      // document.location.href = window.location.pathname + '/submit';
-      // (Taken care of by turbolinks.)
+      return response;
     },
     error: function (response) {
-      console.log(response);
-      // TODO Probably you're offline? Try again when online.
-      // (And stay on beachclean page.)
+      console.log('ajax.error: ' + response);
+      // TODO redirect to offline page?
     }
   });
 }
 
 /**
- * Attach a handler to the "Submit" button that sends the user
- * to the /submit page.
+ * Attach a handler to the "Submit" button that submits the beachclean
+ * to the server.
  */
 function submitButton() {
   $('#js-submit-beachclean').on('click', function (event) {
@@ -151,7 +149,11 @@ function submitButton() {
         }
       })
       .then(function (result) {
-        return submit(beachclean, result.docs);
+        submit(beachclean, result.docs);
+        // .then(function () {
+        //   window.location = window.location.pathname + '/summary';
+        // })
+        // .catch(console.log);
       })
       .catch(console.log);
     })
