@@ -68,7 +68,7 @@ self.addEventListener('fetch', function (event) {
   // cache the response before returning it.
   if (event.request.url.endsWith('.js') || event.request.url.endsWith('.css')) {
     return caches
-      .match(request)
+      .match(event.request)
       .then((response) => { return response; })
       .catch(() => {
         fetch(request)
