@@ -85,12 +85,7 @@ self.addEventListener('fetch', function (event) {
   if (event.request.url.match(showBeachcleanPattern)) {
     return caches
       .match('/beachclean_show.html')
-      .then((response) => response.text())
-      .then((text) => event.respondWith(
-        new Response(text, {
-          headers: {'Content-Type': 'text/html'}
-        })
-      ))
+      .then((response) => { return response; })
       .catch(console.log);
   }
 
