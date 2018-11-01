@@ -73,7 +73,7 @@ self.addEventListener('fetch', function (event) {
       .catch(() => {
         fetch(request)
         .then((response) => {
-          cache.put(request, response);
+          caches.put(request, response);
           return response;
         })
         .catch(console.log);
@@ -114,7 +114,7 @@ function cacheOrNetworkOrOffline(request) {
 }
 
 function offlineResponse() {
-  return cache
+  return caches
     .match('/offline.html')
     .then((response) => { return response; })
     .catch(console.log);
