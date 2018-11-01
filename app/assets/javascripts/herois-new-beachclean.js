@@ -40,7 +40,7 @@ function startLoggingButton() {
       .then(function (beachclean) {
         database.put(beachclean)
         .then(function () {
-          document.location.href = '/beachcleans/' + beachclean._id;
+          window.location = window.location.pathname.replace('/new', '/' + beachclean._id);
         })
         .catch(console.log);
       })
