@@ -1,6 +1,6 @@
 %ul
   - @items.each do |item|
-    %a{ href: '#', class: 'item', 'data-item-category' => item.category }
+    %a{ href: '#', class: 'item', 'data-item-category' => item.category, 'data-turbolinks' => 'false' }
       %li.item
         %span.item-component.name
           = item.category.full_name

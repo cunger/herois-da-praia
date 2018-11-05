@@ -5,7 +5,7 @@ function isViewFor(controller, action) {
   ).length;
 }
 
-$(document).on('turbolinks:load', function (event) {
+$(document).on('ready turbolinks:load', function (event) {
   if (isViewFor('welcome', 'start')) {
     indicateUnsubmittedLogs();
     return;
