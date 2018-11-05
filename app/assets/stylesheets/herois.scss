@@ -73,7 +73,7 @@ footer {
 }
 
 main {
-  padding: 10px;
+  padding: 20px;
 }
 
 li {
@@ -197,6 +197,15 @@ label {
 ul {
   margin: 0 auto;
   padding: 0;
+}
+
+ul.bullets {
+  margin: 1em;
+}
+
+ul.bullets li {
+  list-style-type: circle;
+  padding: 0 0.4em;
 }
 
 li.activity {

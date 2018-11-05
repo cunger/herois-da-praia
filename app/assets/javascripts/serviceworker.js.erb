@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v20181020';
+const CACHE_VERSION = 'v20181102';
 const CACHE_NAME = CACHE_VERSION + '-offline';
 
 const offlineResources = [
@@ -6,6 +6,7 @@ const offlineResources = [
   '/',
   '/info',
   '/beachcleans/new',
+  '/whalewatches/new',
   '/activities',
   // Pages
   '/beachclean_show.html',
@@ -16,12 +17,18 @@ const offlineResources = [
   '/fonts/Montserrat-Bold.otf',
   // Images
   '/images/lto_logo.png',
+  '/images/icon.png',
   '/images/analytics_icon.png',
   '/images/beachclean_icon.png',
   '/images/info_icon.png',
   '/images/unsubmitted_icon.png',
-  '/images/whalewatch_icon.png'
-  // CSS + JS: see Fetch below
+  '/images/whalewatch_icon.png',
+  // CSS + JS
+  '<%= asset_path "application.js" %>',
+  '<%= asset_path "application.css" %>',
+  // Others
+  '/favicon.ico',
+  '/manifest.json'
 ];
 
 // Installation
@@ -64,58 +71,49 @@ function removeOldCaches() {
 // Fetch
 
 self.addEventListener('fetch', function (event) {
-  // If the request is a CSS or JS file that was not yet cached,
-  // cache the response before returning it.
-  if (event.request.url.endsWith('.js') || event.request.url.endsWith('.css')) {
-    return caches
-      .match(event.request)
-      .then((response) => { return response; })
-      .catch(() => {
-        fetch(request)
-        .then((response) => {
-          caches.put(request, response);
-          return response;
-        })
-        .catch(console.log);
-      });
-  }
+  // If the request is to show a beachclean, return cached page.
+  // Otherwise try the cache, the network, and the offline fallback.
 
-  // If the request is to show a beachclean, return cached HTML.
   var showBeachcleanPattern = /.*\/beachcleans\/[\w\-]+\/?$/;
-  if (event.request.url.match(showBeachcleanPattern)) {
-    return caches
-      .match('/beachclean_show.html')
-      .then((response) => { return response; })
-      .catch(console.log);
+  var newBeachcleanPattern  = /.*\/beachcleans\/new\/?$/;
+  var responsePromise;
+
+  if (event.request.url.match(showBeachcleanPattern) &&
+     !event.request.url.match(newBeachcleanPattern)) {
+    responsePromise = cachedPage('/beachclean_show.html');
+  } else {
+    responsePromise = cacheOrNetworkOrOffline(event.request);
   }
 
-  event.respondWith(cacheOrNetworkOrOffline(event.request));
+  event.respondWith(responsePromise);
 });
 
-// 1. Check cache. Since not all requests are cached, this will fail for
-//    requests that do require a network (e.g. for submitting a log).
-// 2. Check network.
-// 3. If there is no network connection, show offline fallback that asks
-//    the user to try again when online.
-
-function cacheOrNetworkOrOffline(request) {
+function cachedPage(page) {
   return caches
-    .match(request)
-    .then((response) => {
-      log(`${request.method} ${request.url} ${response ? '(cached)' : '(not cached)'}`);
-      return response || fetch(request).then((response) => { return response; })
-                                       .catch(() => { return offlineResponse() });
-    });
-}
-
-function offlineResponse() {
-  return caches
-    .match('/offline.html')
+    .match(page)
     .then((response) => { return response; })
     .catch(console.log);
 }
 
-// Utils
+// 1. Check cache. Since not all requests are cached, this will fail for
+//    requests that do require a network (e.g. for submitting a log).
+// 2. Try via network.
+// 3. If there is no network connection, show offline fallback that asks
+//    the user to try again when online.
+function cacheOrNetworkOrOffline(request) {
+  return caches
+    .match(request)
+    .then((response) => {
+      log(request.method + ' ' + request.url + (response ? ' (cached)' : ' (not cached)'));
+      return response ||
+        fetch(request)
+        .then((response) => { return response; })
+        .catch(() => { return cachedPage('/offline.html') });
+    })
+    .catch(console.log);
+}
+
+// Logging
 
 function log(text) {
   console.log('[' + CACHE_NAME + '] ' + text);
