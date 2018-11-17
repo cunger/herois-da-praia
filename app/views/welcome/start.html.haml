@@ -1,4 +1,10 @@
-%h2 Olá, beach hero!
+
+%p
+  Olá, beach hero! We're happy to see you here.
+  How about getting involved in making the world a tiny bit better?
+
+%p
+  %br
 
 %p
   = link_to new_beachclean_path do
@@ -9,6 +15,11 @@
   = link_to new_whalewatch_path do
     %img{ src: '/images/whalewatch_icon.png', class: 'icon' }
     New whale watch
+
+%p
+  = link_to new_fishery_path do
+    %img{ src: '/images/fisheries_icon.png', class: 'icon' }
+    New fisheries data
 
 %p
   %br
@@ -24,11 +35,6 @@
 -#   = link_to analytics_path do
 -#     %img{ src: '/images/analytics_icon.png', class: 'icon' }
 -#     Analytics
-
-%p
-  = link_to info_path do
-    %img{ src: '/images/info_icon.png', class: 'icon' }
-    Info
 
 -# TODO
 -# small: Log in as LTO staff or volunteer

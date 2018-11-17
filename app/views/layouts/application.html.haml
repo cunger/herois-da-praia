@@ -16,7 +16,11 @@
 
   %body{ 'data-controller' => "#{controller_name}", 'data-action' => "#{action_name}" }
     %header
+      %a.top{ 'href' => '/' }
+        HOME
       = link_to image_tag('/images/lto_logo.png', size: '60x60', alt: 'LTO'), root_path
+      %a.top{ 'href' => '/info' }
+        ABOUT
 
     %main
       #content

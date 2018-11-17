@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     # TODO analogous to beachcleans
   end
 
+  resources :fisheries, only: [:new, :show, :create, :destroy], param: :uuid do
+    # TODO analogous to beachcleans
+  end
+
   # Analytics
 
   # TODO
