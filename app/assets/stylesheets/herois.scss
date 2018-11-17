@@ -140,6 +140,11 @@ input[type='submit'] {
   cursor: pointer;
 }
 
+button:disabled,
+button[disabled] {
+  background-color: #b3bdc4;
+}
+
 .save-log,
 .submit-log,
 .delete-log {

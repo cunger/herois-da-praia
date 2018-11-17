@@ -33,6 +33,8 @@ function promiseToSaveItems(uuid) {
     })
   ).then(function () {
     allUpdatesAreSaved = true;
+    $('#js-save-beachclean').prop('disabled', true);
+    $('#js-save-beachclean').text('Saved');
   })
   .catch(console.log);
 }
@@ -86,7 +88,8 @@ function attachHandlersForCountingItems() {
     counterElement.text(counter[category]);
 
     allUpdatesAreSaved = false;
-    // TODO activate Save button
+    $('#js-save-beachclean').prop('disabled', false);
+    $('#js-save-beachclean').text('Save');
   });
 }
 
