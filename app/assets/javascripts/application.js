@@ -1,11 +1,12 @@
 // This is a manifest file that'll be compiled into application.js,
 // which will include all the files listed below.
 //
+//= require promise-polyfill.min
 //= require jquery
 //= require rails-ujs
 //= require turbolinks
-//= require pouchdb-7.0.0.min.js
-//= require pouchdb.find.min.js
+//= require pouchdb-7.0.0.min
+//= require pouchdb.find.min
 //= require herois-shared
 //= require herois-new-beachclean
 //= require herois-show-beachclean
