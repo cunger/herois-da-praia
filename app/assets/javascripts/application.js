@@ -2,6 +2,7 @@
 // which will include all the files listed below.
 //
 //= require promise-polyfill.min
+//= require fetch-polyfill.min
 //= require jquery
 //= require rails-ujs
 //= require turbolinks
