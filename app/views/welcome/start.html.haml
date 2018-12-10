@@ -4,37 +4,29 @@
   Want to get involved in saving the oceans?
 
 %p
-  %br
+  We are a non-profit marine conservation organisation. Our decisions and actions
+  are backed by the data we collect. And that's where we need your help!
 
-%p
-  = link_to new_beachclean_path do
-    %img{ src: '/images/beachclean_icon.png', class: 'icon' }
-    New beach clean
+  %ul.bullets
+    %li
+      You're going for a walk along the beach and notice all the garbage that's
+      been left behind or washed ashore?
+      It's never been easier to help: Bring an old bag and collect what you find.
 
-%p
-  = link_to new_whalewatch_path do
-    %img{ src: '/images/whalewatch_icon.png', class: 'icon' }
-    New whale watch
+      %a.start{ 'href' => '/start/beachclean' }
+        How to log a beach clean
 
-%p
-  = link_to new_fishery_path do
-    %img{ src: '/images/fisheries_icon.png', class: 'icon' }
-    New fisheries data
+    %li
+      You're on a whale watching or snorkeling trip and encounter humpback whales,
+      whale sharks, or manta rays?
+      Let us know!
 
-%p
-  %br
+      %a.start{ 'href' => '/start/whalewatch' }
+        How to log megafauna observations
 
-%p
-  = link_to activities_path do
-    %img{ src: '/images/unsubmitted_icon.png', class: 'icon' }
-    Unsubmitted logs
-    %span{ id: 'unsubmitted-logs-count' }
+    %li
+      You stroll along the beach and see local fishermen bringing in their catch of the day?
+      You always wanted to get to know the local culture a bit more? This is your chance!
 
--# TODO Only when logged in:
--# %p
--#   = link_to analytics_path do
--#     %img{ src: '/images/analytics_icon.png', class: 'icon' }
--#     Analytics
-
--# TODO
--# small: Log in as LTO staff or volunteer
+      %a.start{ 'href' => '/start/fisheries' }
+        How to log catches of the local fishermen

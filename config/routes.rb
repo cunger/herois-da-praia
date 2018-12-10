@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  root 'welcome#start'
+  root 'welcome#home'
 
-  get 'info' => 'welcome#info'
+  get 'about' => 'welcome#about'
+  get 'start' => 'welcome#start'
+  get 'start/beachclean' => 'welcome#start_beachclean'
+  get 'start/whalewatch' => 'welcome#start_whalewatch'
+  get 'start/fisheries'  => 'welcome#start_fisheries'
+  get 'contact' => 'welcome#contact'
 
   # Logging data
 

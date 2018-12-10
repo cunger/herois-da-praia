@@ -1,0 +1,47 @@
+
+%p
+  Olá, beach hero! Ready to rumble?
+
+%p
+  %br
+
+%p
+  = link_to new_beachclean_path do
+    %img{ src: '/images/beachclean_icon.png', class: 'icon' }
+    New beach clean
+
+%p
+  = link_to new_whalewatch_path do
+    %img{ src: '/images/whalewatch_icon.png', class: 'icon' }
+    New whale watch
+
+%p
+  = link_to new_fishery_path do
+    %img{ src: '/images/fisheries_icon.png', class: 'icon' }
+    New fisheries data
+
+%p
+  %br
+
+%p
+  = link_to activities_path do
+    %img{ src: '/images/unsubmitted_icon.png', class: 'icon' }
+    Unsubmitted logs
+    %span{ id: 'unsubmitted-logs-count' }
+
+%p
+  %br
+
+%p
+  First time around or need help?
+  %a{ 'href' => '/start' }
+    Get started here.
+
+-# TODO Only when logged in:
+-# %p
+-#   = link_to analytics_path do
+-#     %img{ src: '/images/analytics_icon.png', class: 'icon' }
+-#     Analytics
+
+-# TODO
+-# small: Log in as LTO staff or volunteer
