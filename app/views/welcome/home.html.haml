@@ -1,6 +1,8 @@
 
 %p
-  Olá, beach hero! Ready to rumble?
+  = link_to start_path do
+    %img{ src: '/images/info_icon.png', class: 'icon' }
+    How to get started
 
 %p
   %br
@@ -29,13 +31,6 @@
     Unsubmitted logs
     %span{ id: 'unsubmitted-logs-count' }
 
-%p
-  %br
-
-%p
-  First time around or need help?
-  %a{ 'href' => '/start' }
-    Get started here.
 
 -# TODO Only when logged in:
 -# %p
