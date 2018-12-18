@@ -17,7 +17,7 @@
 //= require herois-dispatcher
 
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
+  navigator.serviceWorker.register('/serviceworker.js', { scope: '/' })
     .then(function (result) {
       console.log('Service worker registered.');
     })
