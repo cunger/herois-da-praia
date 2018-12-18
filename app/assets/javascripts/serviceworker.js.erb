@@ -108,7 +108,7 @@ self.addEventListener('fetch', function (event) {
 function cachedPage(page) {
   return caches
     .match(page)
-    .then(funtion (response) { return response; })
+    .then(function (response) { return response; })
     .catch(console.log);
 }
 
