@@ -10,20 +10,24 @@
 
 //// Actual service worker implementation ////
 
-var CACHE_VERSION = 'v20181102';
+var CACHE_VERSION = 'v20181218';
 var CACHE_NAME = CACHE_VERSION + '-offline';
 
 var offlineResources = [
+  // Pages
+  '/error.html',
+  '/offline.html',
+  '/beachclean_show.html',
   // Paths
   '/',
   '/about',
+  '/start',
   '/beachcleans/new',
   '/whalewatches/new',
   '/activities',
-  // Pages
-  '/beachclean_show.html',
-  '/offline.html',
-  '/error.html',
+  // CSS + JS
+  '<%= asset_path "application.js" %>',
+  '<%= asset_path "application.css" %>',
   // Fonts
   '/fonts/Montserrat-Regular.otf',
   '/fonts/Montserrat-Italic.otf',
@@ -31,14 +35,11 @@ var offlineResources = [
   // Images
   '/images/lto_logo.png',
   '/images/icon.png',
-  '/images/analytics_icon.png',
-  '/images/beachclean_icon.png',
   '/images/info_icon.png',
-  '/images/unsubmitted_icon.png',
+  '/images/beachclean_icon.png',
   '/images/whalewatch_icon.png',
-  // CSS + JS
-  '<%= asset_path "application.js" %>',
-  '<%= asset_path "application.css" %>',
+  '/images/unsubmitted_icon.png',
+  '/images/analytics_icon.png',
   // Others
   '/favicon.ico',
   '/manifest.json'
@@ -89,12 +90,11 @@ self.addEventListener('fetch', function (event) {
 
   var showBeachcleanPattern = /.*\/beachcleans\/[\w\-]+\/?$/;
   var newBeachcleanPattern  = /.*\/beachcleans\/new\/?$/;
-  var sendBeachcleanPattern = /.*\/beachcleans\/(sign|submit|thanks)\/?$/;
+  var sendBeachcleanPattern = /.*\/beachcleans\/[\w\-]+\/(sign|submit|thanks)\/?$/;
   var responsePromise;
 
   if (event.request.url.match(showBeachcleanPattern) &&
-     !event.request.url.match(newBeachcleanPattern) &&
-     !event.request.url.match(sendBeachcleanPattern)) {
+     !event.request.url.match(newBeachcleanPattern)) {
     responsePromise = cachedPage('/beachclean_show.html');
   } else if (event.request.url.match(sendBeachcleanPattern)) {
     responsePromise = networkOrOffline(event.request);
@@ -122,10 +122,16 @@ function cacheOrNetwork(request) {
       } else {
         fetch(request)
         .then(function (response) { return response; })
-        .catch(console.log);
+        .catch(function (error) {
+          console.log(error);
+          return cachedPage('/error.html');
+        });
       }
     })
-    .catch(console.log);
+    .catch(function (error) {
+      console.log(error);
+      return cachedPage('/error.html');
+    });
 }
 
 function networkOrOffline(request) {
@@ -136,7 +142,10 @@ function networkOrOffline(request) {
       } else {
         cachedPage('/offline.html')
         .then(function (response) { return response; })
-        .catch(console.log);
+        .catch(function (error) {
+          console.log(error);
+          return cachedPage('/error.html');
+        });
       }
     })
     .catch(function (error) {

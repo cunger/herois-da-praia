@@ -16,10 +16,10 @@
 //= require herois-thanks
 //= require herois-dispatcher
 
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
-    .then(function (result) {
-      console.log('Service worker registered.');
-    })
-    .catch(console.error);
-}
+// if (navigator.serviceWorker) {
+//   navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
+//     .then(function (result) {
+//       console.log('Service worker registered.');
+//     })
+//     .catch(console.error);
+// }
