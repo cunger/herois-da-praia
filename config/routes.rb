@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'start/beachclean' => 'welcome#start_beachclean'
   get 'start/whalewatch' => 'welcome#start_whalewatch'
   get 'start/fisheries'  => 'welcome#start_fisheries'
-  get 'contact' => 'welcome#contact'
+
+  get  'contact' => 'messages#new'
+  post 'contact' => 'messages#create', :as => :create_message
 
   # Logging data
 

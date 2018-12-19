@@ -194,6 +194,12 @@ input[type='checkbox'] {
   display: inline-block;
 }
 
+textarea {
+  height: 10em;
+  width: 30em;
+  padding: 0.6em;
+}
+
 fieldset {
   border: 0;
   margin: 10px 0;

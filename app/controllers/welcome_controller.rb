@@ -2,6 +2,9 @@ class WelcomeController < ApplicationController
   def home
   end
 
+  def about
+  end
+
   def start
   end
 
@@ -12,8 +15,5 @@ class WelcomeController < ApplicationController
   end
 
   def start_fisheries
-  end
-
-  def about
   end
 end

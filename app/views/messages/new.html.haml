@@ -1,9 +1,26 @@
 
 %h3 Send us a message
 
-Coming soon.
+- if flash[:error]
+  = flash[:error]
 
-%h3 Drop by and say Hello
+- if flash[:success]
+  = flash[:success]
+
+= form_for @message, :url => create_message_path(@message) do |form|
+
+  = form.label :name, 'Name'
+  = form.text_field :name
+
+  = form.label :email, 'Email address'
+  = form.email_field :email
+
+  = form.label :text, 'Message'
+  = form.text_area :text
+
+  = form.submit 'Send'
+
+%h3 Drop by
 
 %p
   We work together with
