@@ -1,2 +1,3 @@
 web: bundle exec puma -C config/puma.rb
-release: ./release.sh
+
+release: rake render_offline_pages
