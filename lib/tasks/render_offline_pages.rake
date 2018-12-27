@@ -1,19 +1,4 @@
 task :render_offline_pages => :environment do
-  # def replaceAssets(content, include_js = false)
-    # Removes CSS and Javascript tags, and inserts a link to a static version
-    # of the assets. This is because there will be new finger prints more often
-    # than this task is run.
-    #
-    # static_assets = (include_js ? '<script src="application.js">' : '') +
-    #   '<link rel="stylesheet" media="all" href="application.css">'
-    #
-    # content = content
-    #   .gsub(/<link rel="stylesheet".*?\/>/, '')
-    #   .gsub(/<script.*?<\/script>/, '')
-    #   .gsub(/<\/head>/, static_assets + '</head>')
-    #   .squish
-  # end
-
   # Show beachclean
 
   items = []
