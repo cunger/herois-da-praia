@@ -1,0 +1,1 @@
+rake render_offline_pages
