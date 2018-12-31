@@ -32,6 +32,6 @@ RSpec.describe Beachclean, type: :model do
       FactoryBot.create(:item, beachclean_id: beachclean.id, category: ItemCategory::SHOE , quantity: 1)
     ]
 
-    expect(beachclean.estimated_weight_in_gram).to eq(170.45)
+    expect(beachclean.weight_in_gram).to eq(170.45)
   end
 end

@@ -30,7 +30,8 @@ function currentUser() {
       return results.docs[0];
     } else {
       var user = { model: 'user', _id: randomId() };
-      return database.put(user);
+      database.put(user);
+      return user;
     }
   })
   .catch(console.log);

@@ -37,7 +37,8 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'capybara', '>= 2.15'
-  gem 'capybara-webkit'
+  gem 'selenium-webdriver', '>= 3.14'
+  gem 'chromedriver-helper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

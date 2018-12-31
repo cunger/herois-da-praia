@@ -42,7 +42,7 @@ function startLoggingButton() {
         .then(function () {
           window.location = window.location.pathname.replace('/new', '/' + beachclean._id);
         })
-        .catch(console.log);
+        .catch(console.log)
       })
       .catch(console.log);
     })
