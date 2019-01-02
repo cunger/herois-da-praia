@@ -7,6 +7,8 @@ var allUpdatesAreSaved = true;
 function promiseToSaveItems(uuid) {
   if (allUpdatesAreSaved) return Promise.resolve(true);
 
+  if (!database) initDatabase();
+
   return Promise.all(
     Object.getOwnPropertyNames(counter).map(function (category) {
       var quantity = counter[category];
@@ -45,6 +47,8 @@ function promiseToSaveItems(uuid) {
  */
 function initCounts() {
   var uuid = window.location.pathname.split('/')[2];
+
+  if (!database) initDatabase();
 
   database.find({
     selector: {

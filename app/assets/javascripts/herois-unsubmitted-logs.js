@@ -9,18 +9,26 @@ function prettyPlace(log) {
 }
 
 function fillList() {
+  function noUnsubmittedLogs() {
+    var p = document.createElement('p');
+    var p_text = document.createTextNode('You have no unsubmitted logs.');
+    $(p).append(p_text);
+    $(p).insertAfter(ul);
+  }
+
   var ul = $('#unsubmitted-logs');
   ul.empty();
+
+  if (!database) {
+    noUnsubmittedLogs();
+  }
 
   database.find({
     selector: { submitted: false }
   })
   .then(function (result) {
     if (result.docs.length === 0) {
-      var p = document.createElement('p');
-      var p_text = document.createTextNode('You have no unsubmitted logs.');
-      $(p).append(p_text);
-      $(p).insertAfter(ul);
+      noUnsubmittedLogs();
     }
 
     result.docs.forEach(function (log) {

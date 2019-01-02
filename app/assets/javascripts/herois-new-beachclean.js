@@ -17,6 +17,8 @@ function startLoggingButton() {
   $('#js-create-beachclean').on('click', function (event) {
     event.preventDefault();
 
+    if (!database) initDatabase();
+
     var date = $('#beachclean_date').val();
     var place_id = $('#beachclean_place_id').val();
     var place_name = $('#place_name').val();

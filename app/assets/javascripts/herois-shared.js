@@ -16,7 +16,19 @@ function randomId() {
  * Local, client-side database for storing all logged data
  * until it is submitted to the server.
  */
-var database = new PouchDB('herois-da-praia');
+var database;
+
+function initDatabase() {
+  database = new PouchDB('herois-da-praia');
+  console.log('Initiated in-browser database.')
+}
+
+/**
+ * Local, client-side cache for storing all page content
+ * needed for offline view.
+ */
+var CACHE_VERSION = 'v20190101';
+var CACHE_NAME = CACHE_VERSION + '-offline';
 
 /**
  * Get the current user id from the database. If this is the first encounter,

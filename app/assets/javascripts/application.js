@@ -14,6 +14,7 @@
 //= require herois-submit-beachclean
 //= require herois-unsubmitted-logs
 //= require herois-thanks
+//= require herois-delete
 //= require herois-dispatcher
 
 // if (navigator.serviceWorker) {

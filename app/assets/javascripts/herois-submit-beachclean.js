@@ -6,6 +6,8 @@ function finishButton() {
   $('#js-finish-beachclean').on('click', function (event) {
     event.preventDefault();
 
+    if (!database) initDatabase();
+
     var uuid = window.location.pathname.split('/')[2];
 
     database.get(uuid)

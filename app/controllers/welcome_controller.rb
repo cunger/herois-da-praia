@@ -16,4 +16,7 @@ class WelcomeController < ApplicationController
 
   def start_fisheries
   end
+
+  def delete
+  end
 end

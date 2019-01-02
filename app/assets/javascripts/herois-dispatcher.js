@@ -11,6 +11,11 @@ $(document).on('turbolinks:load', function (event) {
     return;
   }
 
+  if (isViewFor('welcome', 'delete')) {
+    deleteAllDataButton();
+    return;
+  }
+
   if (isViewFor('activities', 'index')) {
     fillList();
     return;
