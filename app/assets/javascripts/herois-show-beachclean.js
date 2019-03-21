@@ -112,6 +112,16 @@ function saveButton() {
   });
 }
 
+function markAsSubmitted(beachclean) {
+  database
+    .get(beachclean['_id'])
+    .then(function (doc) {
+      doc['submitted'] = true;
+      database.put(doc, { force: true });
+    })
+    .catch(function (err) { console.log(err); });
+}
+
 /**
  * Function for submitting beachclean data to the server.
  * Sends the locally stored beachclean and its corresponding items
@@ -125,24 +135,29 @@ function submit(beachclean, items) {
       'items': items
     },
     success: function (response) {
+      markAsSubmitted(beachclean);
       return response;
     },
     error: function (response) {
       console.log('ajax.error: ' + response);
-      // TODO redirect to offline page?
+      // TODO redirect to offline page
     }
   });
 }
 
 /**
- * Attach a handler to the "Submit" button that submits the beachclean
+ * Attach a handler to the "Finish" button that submits the beachclean
  * to the server.
  */
-function submitButton() {
-  $('#js-submit-beachclean').on('click', function (event) {
+function finishButton() {
+  $('#js-finish-beachclean').on('click', function (event) {
     event.preventDefault();
 
+    // TODO check name and email
+
     var uuid = window.location.pathname.split('/')[2];
+
+    if (!database) initDatabase();
 
     promiseToSaveItems(uuid)
     .then(function (result) {
@@ -157,10 +172,7 @@ function submitButton() {
       })
       .then(function (result) {
         submit(beachclean, result.docs);
-        // .then(function () {
-        //   window.location = window.location.pathname + '/summary';
-        // })
-        // .catch(console.log);
+        // TODO also send name and email
       })
       .catch(console.log);
     })

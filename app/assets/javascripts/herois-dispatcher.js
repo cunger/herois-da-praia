@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function (event) {
     initCounts();
     attachHandlersForCountingItems();
     saveButton();
-    submitButton();
+    finishButton();
     deleteButton();
     return;
   }
@@ -39,7 +39,6 @@ $(document).on('turbolinks:load', function (event) {
   if (isViewFor('beachcleans', 'summary')) {
     initCounts();
     backButton();
-    finishButton();
     return;
   }
 

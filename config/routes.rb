@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   resources :beachcleans, only: [:new, :show, :create, :destroy], param: :uuid do
     post :submit,  :controller => 'beachcleans', :action => 'submit'
     get  :summary, :controller => 'beachcleans', :action => 'summary'
-    get  :sign,    :controller => 'beachcleans', :action => 'sign'
-    post :sign,    :controller => 'beachcleans', :action => 'create_signature'
     get  :thanks,  :controller => 'beachcleans', :action => 'thanks'
   end
 

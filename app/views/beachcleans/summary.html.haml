@@ -19,5 +19,28 @@
   %strong Estimated weight:
   #{@weight_in_kg.round(2)} kg
 
-%button.submit-log{ id: 'js-show-beachclean' } Back
-%button.submit-log{ id: 'js-finish-beachclean' } Finish
+%p
+
+= form_tag('/beachcleans/' + @beachclean.uuid + '/sign', method: 'POST') do
+  I am a
+  %ul
+    %li
+    = radio_button_tag(:group, :visitor)
+    visitor
+    %li
+    = radio_button_tag(:group, :resident)
+    resident
+    %li
+    = radio_button_tag(:group, :lto_volunteer)
+    LTO volunteer
+
+  = label_tag :name, 'Name'
+  = text_field_tag :name
+
+  = label_tag :email, 'Email'
+  = email_field_tag :email
+
+  %span.footprint We will not share your information with anyone else.
+
+  %button.submit-log{ id: 'js-show-beachclean' } Back
+  = submit_tag 'Submit beach clean'
