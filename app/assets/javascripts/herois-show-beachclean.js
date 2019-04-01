@@ -127,7 +127,7 @@ function markAsSubmitted(beachclean) {
  * Sends the locally stored beachclean and its corresponding items
  * to the server.
  */
-function submit(beachclean, items) {
+function submitBeachclean(beachclean, items) {
   $.ajax(window.location.pathname + '/submit', {
     method: 'POST',
     data: {
@@ -139,7 +139,7 @@ function submit(beachclean, items) {
       return response;
     },
     error: function (response) {
-      console.log('ajax.error: ' + response);
+      console.log(response);
       // TODO redirect to offline page
     }
   });
@@ -152,8 +152,6 @@ function submit(beachclean, items) {
 function finishButton() {
   $('#js-finish-beachclean').on('click', function (event) {
     event.preventDefault();
-
-    // TODO check name and email
 
     var uuid = window.location.pathname.split('/')[2];
 
@@ -171,8 +169,7 @@ function finishButton() {
         }
       })
       .then(function (result) {
-        submit(beachclean, result.docs);
-        // TODO also send name and email
+        submitBeachclean(beachclean, result.docs);
       })
       .catch(console.log);
     })

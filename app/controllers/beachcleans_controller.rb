@@ -26,7 +26,7 @@ class BeachcleansController < ApplicationController
     @beachclean.update beachclean_params.merge({
       user_id: @user.id,
       place_id: @place.id,
-      signed: true
+      signed: false
     })
 
     (params['items'] || {}).each_pair do |_, item|
@@ -37,16 +37,26 @@ class BeachcleansController < ApplicationController
       item.update(quantity: quantity)
     end
 
-    # TODO update user name and email
-    # @user.update params.permit(:group, :name, :email)
-
-    redirect_to beachclean_thanks_path
+    redirect_to beachclean_summary_path
   end
 
   def summary
     @beachclean = find_beachclean
     @items = all_items
     @weight_in_kg = @beachclean.weight_in_gram / 1000
+  end
+
+  def sign
+    @user = find_user(user_uuid) || new_user(user_uuid)
+    @user.update(
+      name: params[:user_name],
+      email: params[:user_email],
+      group: params[:user_group])
+
+    @beachclean = find_beachclean
+    @beachclean.update(signed: true)
+
+    redirect_to beachclean_thanks_path
   end
 
   def thanks
@@ -63,7 +73,7 @@ class BeachcleansController < ApplicationController
   end
 
   def user_uuid
-    params[:beachclean][:user_uuid]
+    params[:user_uuid] || params[:beachclean][:user_uuid]
   end
 
   def place_id

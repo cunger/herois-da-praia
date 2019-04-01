@@ -39,11 +39,7 @@ $(document).on('turbolinks:load', function (event) {
   if (isViewFor('beachcleans', 'summary')) {
     initCounts();
     backButton();
-    return;
-  }
-
-  if (isViewFor('beachcleans', 'thanks')) {
-    markBeachcleanAsSubmitted();
+    submitButton();
     return;
   }
 });

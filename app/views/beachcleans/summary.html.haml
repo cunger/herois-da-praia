@@ -19,9 +19,10 @@
   %strong Estimated weight:
   #{@weight_in_kg.round(2)} kg
 
-%p
 
-= form_tag('/beachcleans/' + @beachclean.uuid + '/sign', method: 'POST') do
+
+%p
+= form_tag('/beachcleans/' + @beachclean.uuid + '/sign', method: 'POST', :id => 'signature') do
   I am a
   %ul
     %li
@@ -40,7 +41,10 @@
   = label_tag :email, 'Email'
   = email_field_tag :email
 
-  %span.footprint We will not share your information with anyone else.
+  %p.footprint
+    With this information you sign your beach clean and enable use to use it for research purposes.
+  %p.footprint
+    We will not share your data with anyone else. 
 
   %button.submit-log{ id: 'js-show-beachclean' } Back
-  = submit_tag 'Submit beach clean'
+  %button.submit-log{ id: 'js-submit-beachclean' } Submit beach clean
